@@ -8,7 +8,7 @@ interface LOLService {
     suspend fun listPopularMoviesAsync(
         @Query("api_key") apiKey: String,
         @Query("region") region: String
-    ): MovieDbResult
+    ): Response<MovieDbResult>
 
     */
 
