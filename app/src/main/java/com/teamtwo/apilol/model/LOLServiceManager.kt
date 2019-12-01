@@ -15,7 +15,6 @@ class LOLServiceManager {
     val service: LOLService = Retrofit.Builder()
         .baseUrl("http://ddragon.leagueoflegends.com/cdn/9.23.1/")
         .client(okHttpClient)
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .addConverterFactory(GsonConverterFactory.create())
         .build().run {
             create<LOLService>(LOLService::class.java)
