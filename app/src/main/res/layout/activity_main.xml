@@ -4,15 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:paddingStart="20dp"
+    android:paddingLeft="20dp"
+    android:paddingEnd="20dp"
+    android:paddingRight="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCarlos"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="Carlos"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnDaniel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="40dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDaniel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Daniel"
+        app:layout_constraintTop_toBottomOf="@id/btnCarlos"
+        app:layout_constraintBottom_toTopOf="@id/btnDavid"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="40dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnDavid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="David"
+        app:layout_constraintTop_toBottomOf="@id/btnDaniel"
+        app:layout_constraintBottom_toTopOf="@id/btnJorge"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="40dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnJorge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jorge"
+        app:layout_constraintTop_toBottomOf="@id/btnDavid"
+        app:layout_constraintBottom_toTopOf="@id/btnMary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="40dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnMary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mary"
+        app:layout_constraintTop_toBottomOf="@id/btnJorge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="40dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
