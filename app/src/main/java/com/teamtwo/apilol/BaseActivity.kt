@@ -8,11 +8,14 @@ abstract class BaseActivity(@LayoutRes resLayout: Int) : AppCompatActivity(resLa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initListeners()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
     }
+
+    abstract fun initListeners()
 
     fun showLoader() {
 
