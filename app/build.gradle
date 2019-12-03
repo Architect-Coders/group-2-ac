@@ -39,4 +39,5 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 }
