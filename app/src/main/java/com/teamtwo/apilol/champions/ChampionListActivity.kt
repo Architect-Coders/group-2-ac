@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.teamtwo.apilol.BaseActivity
 import com.teamtwo.apilol.R
+import com.teamtwo.apilol.model.ChampionsRepository
 
 class ChampionListActivity : BaseActivity(R.layout.activity_champion_list) {
 
@@ -13,7 +14,7 @@ class ChampionListActivity : BaseActivity(R.layout.activity_champion_list) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(this,
-            ChampionListViewModelFactory(/*championRepository*/)
+            ChampionListViewModelFactory(ChampionsRepository())
         )[ChampionListViewModel::class.java]
 
         viewModel.model.observe(this, Observer(::updateUi))
