@@ -1,5 +1,8 @@
 package com.teamtwo.apilol.model
 
+import retrofit2.http.GET
+import retrofit2.http.Path
+
 interface LOLService {
 
     /* Architect Codders Example
@@ -11,6 +14,10 @@ interface LOLService {
     ): Response<MovieDbResult>
 
     */
+
+    @GET("data/{countryCode}/item.json")
+    suspend fun getAllItems(@Path(value="countryCode", encoded=false) countryCode: String)
+
 
 
 }
