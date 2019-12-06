@@ -22,12 +22,17 @@ import java.util.*
 
 class GpsLocation : AppCompatActivity() {
 
+    companion object {
+        var currentLocationcode: String = "en_US"
+    }
+
     private var locationManager : LocationManager? = null
 
     private val locationListener: LocationListener = object : LocationListener {
         override fun onLocationChanged(location: Location) {
 
-            Log.d("LOCATION CODE:",getLocationCode(location))
+            val newLocation: String = getLocationCode(location)
+            locationSave(newLocation)
         }
         override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
         override fun onProviderEnabled(provider: String) {}
@@ -39,30 +44,6 @@ class GpsLocation : AppCompatActivity() {
         locationManager = baseContext.getSystemService(LOCATION_SERVICE) as LocationManager?
         checkPermission()
     }
-
-    private fun getLocationCode(location: Location): String{
-
-        var countryCode = getCountryCode(location)
-        var languageCode = getLanguageCode(countryCode)
-
-        return "${languageCode}_${countryCode}"
-    }
-
-    private fun getCountryCode(location: Location): String{
-
-        return Geocoder(this)
-            .getFromLocation(
-                location.latitude,
-                location.longitude,
-                1)[0]
-            .countryCode
-    }
-
-    private fun getLanguageCode(countryCode: String): String{
-
-        return CountryLanguage.valueOf(countryCode).code
-    }
-
 
     private fun checkPermission(){
 
@@ -93,5 +74,32 @@ class GpsLocation : AppCompatActivity() {
                     token?.continuePermissionRequest()
                 }
             }).check()
+    }
+
+    private fun getLocationCode(location: Location): String{
+
+        var countryCode = getCountryCode(location)
+        var languageCode = getLanguageCode(countryCode)
+
+        return "${languageCode}_${countryCode}"
+    }
+
+    private fun getCountryCode(location: Location): String{
+
+        return Geocoder(this)
+            .getFromLocation(
+                location.latitude,
+                location.longitude,
+                1)[0]
+            .countryCode
+    }
+
+    private fun getLanguageCode(countryCode: String): String{
+
+        return CountryLanguage.valueOf(countryCode).code
+    }
+
+    private fun locationSave(location:String){
+        currentLocationcode = location
     }
 }
