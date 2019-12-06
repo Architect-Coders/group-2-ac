@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <include layout="@layout/loading"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChampions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/champion_list_item"/>
+        android:layout_gravity="center"
+        tools:listitem="@layout/champion_list_item" />
 
 </LinearLayout>

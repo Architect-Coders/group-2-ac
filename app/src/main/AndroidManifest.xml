@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".champions.ChampionListActivity" />
+        <activity android:name=".champions.ChampionDetailActivity" />
     </application>
 
 </manifest>

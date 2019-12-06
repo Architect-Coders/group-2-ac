@@ -1,5 +1,8 @@
 package com.teamtwo.apilol.model.champions
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 data class ChampionsResponse (
     val type: String,
     val format: String,
@@ -7,6 +10,7 @@ data class ChampionsResponse (
     val data: Map<String, Champion>
 )
 
+@Parcelize
 data class Champion (
     val version: String,
     val id: String,
@@ -16,11 +20,12 @@ data class Champion (
     val blurb: String,
     val info: Info,
     val image: Image,
-    val tags: List<Tag>,
-    val partype: Partype,
+    val tags: List<String>,
+    val partype: String,
     val stats: Map<String, Double>
-)
+) : Parcelable
 
+@Parcelize
 data class Image (
     val full: String,
     val sprite: String,
@@ -28,35 +33,12 @@ data class Image (
     val y: Long,
     val w: Long,
     val h: Long
-)
+) : Parcelable
 
+@Parcelize
 data class Info (
     val attack: Long,
     val defense: Long,
     val magic: Long,
     val difficulty: Long
-)
-
-enum class Partype {
-    BloodWell,
-    Courage,
-    CrimsonRush,
-    Energy,
-    Ferocity,
-    Flow,
-    Fury,
-    Heat,
-    Mana,
-    None,
-    Rage,
-    Shield
-}
-
-enum class Tag {
-    Assassin,
-    Fighter,
-    Mage,
-    Marksman,
-    Support,
-    Tank
-}
+) : Parcelable
