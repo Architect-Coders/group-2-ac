@@ -1,6 +1,8 @@
 package com.teamtwo.apilol
 
+import android.content.Intent
 import android.os.Bundle
+import com.teamtwo.apilol.matches.MatchListActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
@@ -13,7 +15,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         btnCarlos.setOnClickListener { toast("Carlos") }
         btnDaniel.setOnClickListener { toast("Daniel") }
         btnDavid.setOnClickListener { toast("David") }
-        btnJorge.setOnClickListener { toast("Jorge") }
+        btnJorge.setOnClickListener { startActivity(Intent(this, MatchListActivity::class.java)) }
         btnMary.setOnClickListener { toast("Mary") }
     }
 }
