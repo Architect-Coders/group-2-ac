@@ -12,8 +12,6 @@ class ChampionDetailActivity : BaseActivity(R.layout.activity_champion_detail) {
         const val BASE_URL_BACKGROUND = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/"
     }
 
-    private var champion: Champion? = null
-
     override fun initListeners() {}
 
     override fun onSupportNavigateUp(): Boolean {
@@ -23,28 +21,26 @@ class ChampionDetailActivity : BaseActivity(R.layout.activity_champion_detail) {
 
     override fun onStart() {
         super.onStart()
-        champion = intent.getParcelableExtra(this::class.java.canonicalName)
+        val champion = intent.getParcelableExtra(this::class.java.canonicalName) as Champion
 
-        champion?.let {
-            with(it.stats){
-                tvHP.text = "$hp"
-                tvMP.text = "$mp"
-                tvSpeed.text = "$movespeed"
-                tvArmor.text = "$armor"
-                tvSpellBlock.text = "$spellblock"
-                tvAttackRange.text = "$attackrange"
-                tvHPRegen.text = "$hpregen"
-                tvMPRegen.text = "$mpregen"
-                tvCrit.text = "$crit"
-                tvAttackDamage.text = "$attackdamage"
-                tvAttackSpeed.text = "$attackspeed"
-            }
-
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.setDisplayShowHomeEnabled(true)
-
-            supportActionBar?.title = it.name
-            ivChampionBackground.loadUrl(BASE_URL_BACKGROUND + it.id + "_0.jpg")
+        with(champion.stats){
+            tvHP.text = "$hp"
+            tvMP.text = "$mp"
+            tvSpeed.text = "$movespeed"
+            tvArmor.text = "$armor"
+            tvSpellBlock.text = "$spellblock"
+            tvAttackRange.text = "$attackrange"
+            tvHPRegen.text = "$hpregen"
+            tvMPRegen.text = "$mpregen"
+            tvCrit.text = "$crit"
+            tvAttackDamage.text = "$attackdamage"
+            tvAttackSpeed.text = "$attackspeed"
         }
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        supportActionBar?.title = champion.name
+        ivChampionBackground.loadUrl(BASE_URL_BACKGROUND + champion.id + "_0.jpg")
     }
 }
