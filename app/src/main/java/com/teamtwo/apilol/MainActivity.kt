@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.teamtwo.apilol.matches.MatchListActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
+@kotlin.time.ExperimentalTime
 class MainActivity : BaseActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {

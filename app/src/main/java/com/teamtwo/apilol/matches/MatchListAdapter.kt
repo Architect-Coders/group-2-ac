@@ -2,6 +2,8 @@ package com.teamtwo.apilol.matches
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +33,17 @@ class MatchListAdapter(private val listener: (FeaturedGameInfo) -> Unit)
 
             containerView.setOnClickListener { listener.invoke(gameInfo) }
             gameIdText.text = gameInfo.gameId.toString()
+            participantsText.text = prepareParticipants(gameInfo.participants)
+        }
+
+        private fun prepareParticipants (participants: List<Participant>): CharSequence {
+            return buildSpannedString {
+                participants.forEach {
+                    append(it.summonerName + " ")
+                    bold { "(${it.championId})" }
+                    appendln()
+                }
+            }
         }
     }
 

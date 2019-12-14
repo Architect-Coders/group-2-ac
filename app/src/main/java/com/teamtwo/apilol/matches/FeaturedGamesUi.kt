@@ -4,11 +4,6 @@ import android.os.Parcelable
 import com.teamtwo.apilol.Queue
 import kotlinx.android.parcel.Parcelize
 
-data class FeaturedGames (
-    val clientRefreshInterval: Long,
-    val gameList: List<FeaturedGameInfo>
-)
-
 @Parcelize
 data class FeaturedGameInfo (
     val gameId: Long,

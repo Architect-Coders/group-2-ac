@@ -12,6 +12,7 @@ import com.teamtwo.apilol.model.LOLServiceManager
 import com.teamtwo.apilol.toast
 import kotlinx.android.synthetic.main.activity_match_list.*
 
+@kotlin.time.ExperimentalTime
 class MatchListActivity: BaseActivity(R.layout.activity_match_list) {
 
     private val viewModel: MatchViewModel by lazy {
