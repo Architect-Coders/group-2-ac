@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="marginSmall">10dp</dimen>
+
+    <dimen name="font18">18sp</dimen>
 </resources>

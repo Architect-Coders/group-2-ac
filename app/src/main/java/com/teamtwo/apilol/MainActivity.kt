@@ -1,6 +1,8 @@
 package com.teamtwo.apilol
 
+import android.content.Intent
 import android.os.Bundle
+import com.teamtwo.apilol.spells.SpellsLsitActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
@@ -14,6 +16,6 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         btnDaniel.setOnClickListener { toast("Daniel") }
         btnDavid.setOnClickListener { toast("David") }
         btnJorge.setOnClickListener { toast("Jorge") }
-        btnMary.setOnClickListener { toast("Mary") }
+        btnMary.setOnClickListener { startActivity(Intent(this, SpellsLsitActivity::class.java)) }
     }
 }
