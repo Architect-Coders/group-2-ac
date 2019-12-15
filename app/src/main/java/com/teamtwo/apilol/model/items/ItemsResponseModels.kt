@@ -7,7 +7,7 @@ data class ItemsResponse (
     val type: String,
     val version: String,
     val data: Map<Int, Item>,
-    val tree: Map<Int,Tree>
+    val tree: Array<Tree>
 )
 
 @Parcelize
@@ -19,7 +19,7 @@ data class Item (
     val image: Image,
     val gold: Gold,
     val tags: Array<String>,
-    val stats: Map<String,Int>
+    val stats: Map<String,Double>
 
 ) : Parcelable
 

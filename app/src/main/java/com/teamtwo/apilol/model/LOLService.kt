@@ -1,5 +1,7 @@
 package com.teamtwo.apilol.model
 
+import com.teamtwo.apilol.model.items.ItemsResponse
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -16,8 +18,5 @@ interface LOLService {
     */
 
     @GET("data/{countryCode}/item.json")
-    suspend fun getAllItems(@Path(value="countryCode", encoded=false) countryCode: String)
-
-
-
+    suspend fun getAllItems(@Path(value="countryCode", encoded=false) countryCode: String): Response<ItemsResponse>
 }
