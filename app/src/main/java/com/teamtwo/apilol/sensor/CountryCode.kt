@@ -1,13 +1,25 @@
 package com.teamtwo.apilol.sensor
 
+import android.app.Application
 import android.content.Context
 import android.location.Geocoder
 import android.location.Location
 
-class CountryCode(val location: Location, val context: Context) {
+class CountryCode(val application: Application) {
 
-    fun getCode(): String{
-        val countryData = Geocoder(context)
+    private var COUNTRY_CODE = "en_US"
+
+    fun getCode(): String {
+
+        var location = GpsLocation.location
+        return location?.let {
+            getCountryCode(it)
+        }?:COUNTRY_CODE
+
+    }
+
+    private fun getCountryCode(location: Location): String{
+        val countryData = Geocoder(application)
             .getFromLocation(
                 location.latitude,
                 location.longitude,

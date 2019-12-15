@@ -1,6 +1,8 @@
 package com.teamtwo.apilol.sensor
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.Application
 import android.content.Context
 import android.content.Context.LOCATION_SERVICE
 import android.location.Location
@@ -13,60 +15,30 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import com.teamtwo.apilol.LolPermission
 
-class GpsLocation(val context: Context) : LocationListener {
+class GpsLocation(private val context: Application) {
 
     companion object {
-        lateinit var location: Location
-    }
-    private var locationManager = context.getSystemService(LOCATION_SERVICE) as LocationManager
-
-    init { checkPermission() }
-
-    private fun checkPermission(){
-
-        Dexter.withActivity(context as Activity?)
-            .withPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
-            .withListener(object: PermissionListener{
-                override fun onPermissionGranted(response: PermissionGrantedResponse?) {
-
-                    try {
-                        locationManager.requestLocationUpdates(
-                            LocationManager.GPS_PROVIDER,
-                            0L,
-                            0f,
-                            this@GpsLocation
-                        )
-                    } catch(ex: SecurityException) {
-
-                    }
-                }
-
-                override fun onPermissionDenied(response: PermissionDeniedResponse?) {
-                }
-
-                override fun onPermissionRationaleShouldBeShown(
-                    permission: PermissionRequest?,
-                    token: PermissionToken?) {
-
-                    token?.continuePermissionRequest()
-                }
-            }).check()
+        var location: Location? = null
     }
 
-    override fun onLocationChanged(currentLocation: Location) {
-        location = currentLocation
+    init {
+        var locationManager: LocationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        initLocation(locationManager)
     }
 
-    override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    @SuppressLint("MissingPermission")
+    private fun initLocation(locationManager: LocationManager) {
+
+        if(checkPermissionGps())
+            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
     }
 
-    override fun onProviderEnabled(provider: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    private fun checkPermissionGps(): Boolean{
+
+        return LolPermission(context)
+            .checkPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
     }
 
-    override fun onProviderDisabled(provider: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 }
