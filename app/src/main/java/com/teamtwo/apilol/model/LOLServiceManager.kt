@@ -19,4 +19,12 @@ class LOLServiceManager {
         .build().run {
             create<LOLService>(LOLService::class.java)
         }
+
+    val serviceFindByName: LOLService = Retrofit.Builder()
+        .baseUrl("https://euw1.api.riotgames.com/lol/")
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build().run {
+            create<LOLService>(LOLService::class.java)
+        }
 }
