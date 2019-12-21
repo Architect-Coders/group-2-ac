@@ -24,7 +24,7 @@ class ItemListActivity : BaseActivity(R.layout.activity_item_list) {
         supportActionBar?.title = "Items"
 
         viewModel = ViewModelProviders.of(this,
-            ChampionListViewModelFactory(ItemsRepository())
+            ItemListViewModelFactory(ItemsRepository())
         )[ItemListViewModel::class.java]
 
         rvItems.layoutManager = GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)

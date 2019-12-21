@@ -36,7 +36,7 @@ class ItemListViewModel(private val itemsRepository: ItemsRepository)
     }
 }
 
-class ChampionListViewModelFactory(private val repository: ItemsRepository) : ViewModelProvider.Factory {
+class ItemListViewModelFactory(private val repository: ItemsRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T
             = ItemListViewModel(repository) as T
 }
