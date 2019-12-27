@@ -12,10 +12,9 @@ import kotlinx.coroutines.launch
 
 class SummonnerViewModel(private val summonerRepository: SummonerRepository) : ViewModel(), Scope by Scope.Impl() {
 
-    var name: String = ""
-
     sealed class UiModelSummoner {
         object Loading : UiModelSummoner()
+        object Error : UiModelSummoner()
         class Content(val summoner: Summoner): UiModelSummoner()
     }
 
@@ -24,19 +23,18 @@ class SummonnerViewModel(private val summonerRepository: SummonerRepository) : V
     }
 
     private val _model = MutableLiveData<UiModelSummoner>()
-
     val model: LiveData<UiModelSummoner>
-        get() {
-            reload()
-            return _model
-        }
+        get() =  _model
 
-    private fun reload(){
+    fun reload(name: String) {
         launch {
             _model.value = UiModelSummoner.Loading
             val championsResponse = summonerRepository.getSummoner(name).body()
-            Log.e("a", championsResponse.toString())
-            _model.value = championsResponse?.let { UiModelSummoner.Content(it) }
+            championsResponse?.let {
+                _model.value = UiModelSummoner.Content(it)
+            } ?: run {
+                _model.value = UiModelSummoner.Error
+            }
         }
     }
 
