@@ -12,9 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".items.ItemDetailActivity" />
-        <activity android:name=".items.ItemListActivity" />
+      
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+      
+        <activity android:name=".matches.MatchListActivity"/>
+        <activity android:name=".matches.MatchDetailActivity"/>
+        <activity android:name=".items.ItemDetailActivity" />
+        <activity android:name=".items.ItemListActivity" />
         <activity android:name=".champions.ChampionListActivity" />
         <activity android:name=".champions.ChampionDetailActivity" />
     </application>
