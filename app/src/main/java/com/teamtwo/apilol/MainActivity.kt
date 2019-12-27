@@ -1,6 +1,7 @@
 package com.teamtwo.apilol
 
 import android.content.Intent
+import com.teamtwo.apilol.items.ItemListActivity
 import com.teamtwo.apilol.champions.ChampionListActivity
 import android.app.Application
 import android.os.Bundle
@@ -21,7 +22,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         }
         btnDaniel.setOnClickListener { toast("Daniel") }
         btnDavid.setOnClickListener {
-            toast(CountryCode(application).getCode())
+            startActivity(Intent(this,ItemListActivity::class.java))
         }
         btnJorge.setOnClickListener { toast("Jorge") }
         btnMary.setOnClickListener { toast("Mary") }
