@@ -1,7 +1,6 @@
 package com.teamtwo.apilol.champions
 
 import androidx.lifecycle.*
-import com.teamtwo.apilol.Scope
 import com.teamtwo.apilol.model.ChampionsRepository
 import com.teamtwo.apilol.model.champions.Champion
 import kotlinx.coroutines.launch

@@ -1,97 +1,34 @@
-package com.teamtwo.apilol.Sensor
+package com.teamtwo.apilol.sensor
 
-import android.icu.util.ULocale
-import android.location.Geocoder
+import android.annotation.SuppressLint
+import android.app.Application
+import android.content.Context
 import android.location.Location
-import android.location.LocationListener
 import android.location.LocationManager
-import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import com.karumi.dexter.Dexter
-import com.karumi.dexter.PermissionToken
-import com.karumi.dexter.listener.PermissionDeniedResponse
-import com.karumi.dexter.listener.PermissionGrantedResponse
-import com.karumi.dexter.listener.PermissionRequest
-import com.karumi.dexter.listener.single.PermissionListener
-import com.teamtwo.apilol.R
-import com.teamtwo.apilol.toast
-import java.util.*
+import com.teamtwo.apilol.LolPermission
 
+class GpsLocation(private val context: Application) {
 
-class GpsLocation : AppCompatActivity() {
-
-    private var locationManager : LocationManager? = null
-
-    private val locationListener: LocationListener = object : LocationListener {
-        override fun onLocationChanged(location: Location) {
-
-            Log.d("LOCATION CODE:",getLocationCode(location))
-        }
-        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
-        override fun onProviderEnabled(provider: String) {}
-        override fun onProviderDisabled(provider: String) {}
+    companion object {
+        var location: Location? = null
     }
 
-     fun initGps() {
-
-        locationManager = baseContext.getSystemService(LOCATION_SERVICE) as LocationManager?
-        checkPermission()
+    init {
+        val locationManager: LocationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        initLocation(locationManager)
     }
 
-    private fun getLocationCode(location: Location): String{
+    @SuppressLint("MissingPermission")
+    private fun initLocation(locationManager: LocationManager) {
 
-        var countryCode = getCountryCode(location)
-        var languageCode = getLanguageCode(countryCode)
-
-        return "${languageCode}_${countryCode}"
+        if(checkPermissionGps())
+            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
     }
 
-    private fun getCountryCode(location: Location): String{
+    private fun checkPermissionGps(): Boolean{
 
-        return Geocoder(this)
-            .getFromLocation(
-                location.latitude,
-                location.longitude,
-                1)[0]
-            .countryCode
+        return LolPermission(context)
+            .checkPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
     }
 
-    private fun getLanguageCode(countryCode: String): String{
-
-        return CountryLanguage.valueOf(countryCode).code
-    }
-
-
-    private fun checkPermission(){
-
-        Dexter.withActivity(this)
-            .withPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
-            .withListener(object: PermissionListener{
-                override fun onPermissionGranted(response: PermissionGrantedResponse?) {
-
-                    try {
-                        locationManager?.requestLocationUpdates(
-                            LocationManager.GPS_PROVIDER,
-                            0L,
-                            0f,
-                            locationListener
-                        )
-                    } catch(ex: SecurityException) {
-
-                    }
-                }
-
-                override fun onPermissionDenied(response: PermissionDeniedResponse?) {
-                }
-
-                override fun onPermissionRationaleShouldBeShown(
-                    permission: PermissionRequest?,
-                    token: PermissionToken?) {
-
-                    token?.continuePermissionRequest()
-                }
-            }).check()
-    }
 }

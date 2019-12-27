@@ -7,7 +7,6 @@ import com.teamtwo.apilol.matches.MatchListActivity
 import com.teamtwo.apilol.items.ItemListActivity
 import com.teamtwo.apilol.champions.ChampionListActivity
 import android.app.Application
-import com.teamtwo.apilol.sensor.CountryCode
 import com.teamtwo.apilol.sensor.GpsLocation
 import kotlinx.android.synthetic.main.activity_main.*
 
