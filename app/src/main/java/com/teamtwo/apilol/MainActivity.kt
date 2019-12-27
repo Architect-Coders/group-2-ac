@@ -1,5 +1,7 @@
 package com.teamtwo.apilol
 
+import android.content.Intent
+import com.teamtwo.apilol.champions.ChampionListActivity
 import android.app.Application
 import android.os.Bundle
 import com.teamtwo.apilol.sensor.CountryCode
@@ -14,7 +16,9 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     }
 
     override fun initListeners() {
-        btnCarlos.setOnClickListener { toast("Carlos") }
+        btnCarlos.setOnClickListener {
+            startActivity(Intent(this, ChampionListActivity::class.java))
+        }
         btnDaniel.setOnClickListener { toast("Daniel") }
         btnDavid.setOnClickListener {
             toast(CountryCode(application).getCode())
