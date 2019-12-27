@@ -1,5 +1,8 @@
 package com.teamtwo.apilol
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 object Seasons {
 
     const val PRESEASON_3 = 0
@@ -103,12 +106,13 @@ object Queues {
     )
 }
 
+@Parcelize
 data class Queue (
     val queueId: Int,
     val map: String,
     val description: String?,
     val notes: String?
-)
+): Parcelable
 
 object Maps {
     const val SUMMONERS_RIFT_SUMMER = 1
