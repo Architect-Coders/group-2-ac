@@ -14,7 +14,7 @@ class SpellsAdapter(private val listener: (Spell) -> Unit ) :RecyclerView.Adapte
     var items : List<Spell> = emptyList()
 
     companion object{
-        const val  IMAGE_SPELL= "http://ddragon.leagueoflegends.com/cdn/9.24.2/img/spell/"
+        const val  IMAGE_SPELL= "https://ddragon.leagueoflegends.com/cdn/9.24.2/img/spell/"
     }
 
 

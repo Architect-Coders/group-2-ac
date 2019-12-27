@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_item_detail.*
 class ItemDetailActivity : BaseActivity(R.layout.activity_item_detail) {
 
     companion object {
-        const val BASE_URL_BACKGROUND = "http://ddragon.leagueoflegends.com/cdn/9.24.2/img/item/"
+        const val BASE_URL_BACKGROUND = "https://ddragon.leagueoflegends.com/cdn/9.24.2/img/item/"
     }
 
     override fun initListeners() {}

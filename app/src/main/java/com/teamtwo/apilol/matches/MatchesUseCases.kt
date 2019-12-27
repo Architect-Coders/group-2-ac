@@ -8,7 +8,7 @@ import kotlin.Exception
 class GetFeaturedMatchesUseCase (private val service: LOLService) {
 
     companion object {
-        const val apiKey = "RGAPI-028afde9-0e62-4d0d-8780-c82b54c82aea"
+        const val apiKey = "RGAPI-b8b2a114-9933-4154-9ae6-2c10183756e0"
     }
 
     suspend fun execute (): List<FeaturedGameInfo>? {

@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_detail_spell.*
 class SpellDetailActivity : BaseActivity(R.layout.activity_detail_spell) {
 
     companion object{
-        const val  IMAGE_SPELL= "http://ddragon.leagueoflegends.com/cdn/9.24.2/img/spell/"
+        const val  IMAGE_SPELL= "https://ddragon.leagueoflegends.com/cdn/9.24.2/img/spell/"
     }
 
 

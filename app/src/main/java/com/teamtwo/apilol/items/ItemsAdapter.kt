@@ -14,7 +14,7 @@ class ItemsAdapter(private val listener: (Item) -> Unit): RecyclerView.Adapter<I
     var itemList: List<Item> = emptyList()
 
     companion object {
-        const val SQUARE_BASE_URL = "http://ddragon.leagueoflegends.com/cdn/9.24.2/img/item/"
+        const val SQUARE_BASE_URL = "https://ddragon.leagueoflegends.com/cdn/9.24.2/img/item/"
     }
 
     override fun getItemCount() = itemList.size
