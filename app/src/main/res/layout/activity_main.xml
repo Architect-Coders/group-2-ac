@@ -14,7 +14,7 @@
         android:id="@+id/btnCarlos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Carlos"
+        android:text="@string/champions"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnDaniel"
         app:layout_constraintLeft_toLeftOf="parent"

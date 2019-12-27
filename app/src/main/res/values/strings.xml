@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ApiLol</string>
+    <string name="champions">Champions</string>
 </resources>

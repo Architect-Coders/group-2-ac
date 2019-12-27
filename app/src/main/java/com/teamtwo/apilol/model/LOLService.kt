@@ -4,6 +4,7 @@ import com.teamtwo.apilol.model.items.ItemsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import com.teamtwo.apilol.model.champions.ChampionsResponse
 
 interface LOLService {
 
@@ -19,4 +20,7 @@ interface LOLService {
 
     @GET("data/{countryCode}/item.json")
     suspend fun getAllItems(@Path(value="countryCode", encoded=false) countryCode: String): Response<ItemsResponse>
+
+    @GET("data/en_US/champion.json")
+    suspend fun getChampions(): Response<ChampionsResponse>
 }
