@@ -13,7 +13,7 @@ class LOLServiceManager {
     }
 
     val service: LOLService = Retrofit.Builder()
-        .baseUrl("http://ddragon.leagueoflegends.com/cdn/9.23.1/")
+        .baseUrl("https://ddragon.leagueoflegends.com/cdn/9.23.1/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build().run {
