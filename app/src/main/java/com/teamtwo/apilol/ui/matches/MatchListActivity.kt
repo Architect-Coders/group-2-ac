@@ -1,13 +1,13 @@
-package com.teamtwo.apilol.matches
+package com.teamtwo.apilol.ui.matches
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.teamtwo.apilol.BaseActivity
+import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
+import com.teamtwo.apilol.model.GetFeaturedMatchesUseCase
 import com.teamtwo.apilol.model.LOLServiceManager
 import com.teamtwo.apilol.toast
 import kotlinx.android.synthetic.main.activity_match_list.*
@@ -18,7 +18,11 @@ class MatchListActivity: BaseActivity(R.layout.activity_match_list) {
     private val viewModel: MatchViewModel by lazy {
 
         ViewModelProviders.of(this,
-            MatchViewModelFactory(GetFeaturedMatchesUseCase(LOLServiceManager().apiService))
+            MatchViewModelFactory(
+                GetFeaturedMatchesUseCase(
+                    LOLServiceManager().apiService
+                )
+            )
         ).get(MatchViewModel::class.java)
     }
 

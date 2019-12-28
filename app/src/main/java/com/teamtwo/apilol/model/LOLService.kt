@@ -1,7 +1,7 @@
 package com.teamtwo.apilol.model
 
 import com.teamtwo.apilol.model.spells.SpellsResponseModel
-import com.teamtwo.apilol.matches.FeaturedGamesResponse
+import com.teamtwo.apilol.model.matches.FeaturedGamesResponse
 import com.teamtwo.apilol.model.items.ItemsResponse
 import com.teamtwo.apilol.model.champions.ChampionsResponse
 import com.teamtwo.apilol.model.sumonners.Summoner

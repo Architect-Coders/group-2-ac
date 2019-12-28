@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.spells
+package com.teamtwo.apilol.ui.spells
 
 import android.view.View
 import android.view.ViewGroup

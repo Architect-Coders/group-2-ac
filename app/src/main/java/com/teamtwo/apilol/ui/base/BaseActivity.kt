@@ -1,4 +1,4 @@
-package com.teamtwo.apilol
+package com.teamtwo.apilol.ui
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes

@@ -1,6 +1,7 @@
-package com.teamtwo.apilol.matches
+package com.teamtwo.apilol.ui.matches
 
 import androidx.lifecycle.*
+import com.teamtwo.apilol.model.GetFeaturedMatchesUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

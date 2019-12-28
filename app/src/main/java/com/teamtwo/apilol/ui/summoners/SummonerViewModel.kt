@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.summoners
+package com.teamtwo.apilol.ui.summoners
 
 import androidx.lifecycle.*
 import com.teamtwo.apilol.model.SummonerRepository

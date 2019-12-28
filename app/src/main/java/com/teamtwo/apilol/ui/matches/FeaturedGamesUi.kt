@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.matches
+package com.teamtwo.apilol.ui.matches
 
 import android.os.Parcelable
 import com.teamtwo.apilol.Queue

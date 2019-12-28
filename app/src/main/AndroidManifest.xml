@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
       
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,15 +21,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".spells.SpellsLsitActivity"/>
-        <activity android:name=".spells.SpellDetailActivity"/>
-        <activity android:name=".matches.MatchListActivity"/>
-        <activity android:name=".matches.MatchDetailActivity"/>
-        <activity android:name=".items.ItemDetailActivity" />
-        <activity android:name=".items.ItemListActivity" />
-        <activity android:name=".champions.ChampionListActivity" />
-        <activity android:name=".champions.ChampionDetailActivity" />
-        <activity android:name=".summoners.SummonersDetailActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.spells.SpellsLsitActivity"/>
+        <activity android:name="com.teamtwo.apilol.ui.spells.SpellDetailActivity"/>
+        <activity android:name="com.teamtwo.apilol.ui.matches.MatchListActivity"/>
+        <activity android:name="com.teamtwo.apilol.ui.matches.MatchDetailActivity"/>
+        <activity android:name="com.teamtwo.apilol.ui.items.ItemDetailActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.items.ItemListActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.champions.ChampionListActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.champions.ChampionDetailActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.summoners.SummonersDetailActivity" />
     </application>
 
 </manifest>

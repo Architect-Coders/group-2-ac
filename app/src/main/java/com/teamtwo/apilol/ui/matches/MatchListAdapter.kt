@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.matches
+package com.teamtwo.apilol.ui.matches
 
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +11,6 @@ import com.teamtwo.apilol.R
 import com.teamtwo.apilol.inflate
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.cell_featured_match.*
-import kotlinx.android.synthetic.main.cell_featured_match.view.*
 
 class MatchListAdapter(private val listener: (FeaturedGameInfo) -> Unit)
     : ListAdapter<FeaturedGameInfo, MatchListAdapter.ViewHolder>(DIFF_CALLBACK) {

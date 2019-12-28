@@ -1,10 +1,10 @@
-package com.teamtwo.apilol.matches
+package com.teamtwo.apilol.ui.matches
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
-import com.teamtwo.apilol.BaseActivity
+import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.toast
 import kotlinx.android.synthetic.main.activity_match_detail.*
