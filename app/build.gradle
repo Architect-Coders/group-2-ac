@@ -2,6 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+def prop = new Properties()
+prop.load(new FileReader(file("apilol.properties")))
+def apikey = prop['apikey']
+
 androidExtensions {
     experimental = true
 }
@@ -15,6 +19,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "API_KEY", "\"$apikey\""
     }
     buildTypes {
         release {

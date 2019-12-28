@@ -1,5 +1,12 @@
 package com.teamtwo.apilol.model
 
+import com.teamtwo.apilol.BuildConfig
+
 class SummonerRepository {
-    suspend fun getSummoner(summonderName: String) = LOLServiceManager().apiService.getSummoner(summonderName)
+
+    companion object {
+        const val apiKey = BuildConfig.API_KEY
+    }
+
+    suspend fun getSummoner(summonderName: String) = LOLServiceManager().apiService.getSummoner(summonderName, apiKey)
 }
