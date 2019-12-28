@@ -8,7 +8,6 @@ import com.teamtwo.apilol.model.sumonners.Summoner
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.Path
 
 interface LOLService {
@@ -37,7 +36,6 @@ interface LOLService {
     @GET("data/en_US/champion.json")
     suspend fun getChampions(): Response<ChampionsResponse>
 
-    @Headers("X-Riot-Token: RGAPI-2ab833a6-db10-4628-bec7-a125a12faa86")
     @GET("summoner/v4/summoners/by-name/{value}")
-    suspend fun getSummoner(@Path("value") summonerName: String): Response<Summoner>
+    suspend fun getSummoner(@Path("value") summonerName: String, @Header("X-Riot-Token") apiKey: String): Response<Summoner>
 }

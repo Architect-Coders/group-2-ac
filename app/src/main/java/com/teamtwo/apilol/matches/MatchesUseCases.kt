@@ -1,14 +1,14 @@
 package com.teamtwo.apilol.matches
 
+import com.teamtwo.apilol.BuildConfig
 import com.teamtwo.apilol.Queue
 import com.teamtwo.apilol.Queues
 import com.teamtwo.apilol.model.LOLService
-import kotlin.Exception
 
 class GetFeaturedMatchesUseCase (private val service: LOLService) {
 
     companion object {
-        const val apiKey = "RGAPI-b8b2a114-9933-4154-9ae6-2c10183756e0"
+        const val apiKey = BuildConfig.API_KEY
     }
 
     suspend fun execute (): List<FeaturedGameInfo>? {
