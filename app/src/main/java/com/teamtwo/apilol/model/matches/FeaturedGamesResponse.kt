@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.matches
+package com.teamtwo.apilol.ui.matches
 
 data class FeaturedGamesResponse (
     val clientRefreshInterval: Long?,

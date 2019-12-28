@@ -1,11 +1,11 @@
-package com.teamtwo.apilol.spells
+package com.teamtwo.apilol.ui.spells
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.teamtwo.apilol.BaseActivity
+import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.model.SpellsRepository
 import kotlinx.android.synthetic.main.activity_spells_list.*

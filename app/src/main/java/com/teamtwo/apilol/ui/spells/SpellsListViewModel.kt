@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.spells
+package com.teamtwo.apilol.ui.spells
 
 import androidx.lifecycle.*
 import com.teamtwo.apilol.model.SpellsRepository

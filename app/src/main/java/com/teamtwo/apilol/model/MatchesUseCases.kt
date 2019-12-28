@@ -1,9 +1,13 @@
-package com.teamtwo.apilol.matches
+package com.teamtwo.apilol.model
 
 import com.teamtwo.apilol.BuildConfig
 import com.teamtwo.apilol.Queue
 import com.teamtwo.apilol.Queues
-import com.teamtwo.apilol.model.LOLService
+import com.teamtwo.apilol.model.matches.FeaturedGamesResponse
+import com.teamtwo.apilol.ui.matches.BannedChampion
+import com.teamtwo.apilol.ui.matches.FeaturedGameInfo
+import com.teamtwo.apilol.ui.matches.Observer
+import com.teamtwo.apilol.ui.matches.Participant
 
 class GetFeaturedMatchesUseCase (private val service: LOLService) {
 
