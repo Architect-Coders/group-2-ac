@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.champions
+package com.teamtwo.apilol.ui.champions
 
 import androidx.lifecycle.*
 import com.teamtwo.apilol.model.ChampionsRepository

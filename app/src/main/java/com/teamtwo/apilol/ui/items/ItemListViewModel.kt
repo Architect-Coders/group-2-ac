@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.items
+package com.teamtwo.apilol.ui.items
 
 import androidx.lifecycle.*
 import com.teamtwo.apilol.model.ItemsRepository

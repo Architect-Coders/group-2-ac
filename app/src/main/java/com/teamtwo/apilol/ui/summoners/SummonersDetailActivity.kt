@@ -1,12 +1,12 @@
-package com.teamtwo.apilol.summoners
+package com.teamtwo.apilol.ui.summoners
 
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.teamtwo.apilol.BaseActivity
+import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
-import com.teamtwo.apilol.summoners.SummonnerViewModel.UiModelSummoner
+import com.teamtwo.apilol.ui.summoners.SummonnerViewModel.UiModelSummoner
 import com.teamtwo.apilol.model.SummonerRepository
 import com.teamtwo.apilol.model.sumonners.Summoner
 import com.teamtwo.apilol.toast
