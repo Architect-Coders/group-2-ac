@@ -21,8 +21,8 @@ class SummonnerViewModel(private val summonerRepository: SummonerRepository) : V
     fun reload(name: String) {
         viewModelScope.launch {
             _model.value = UiModelSummoner.Loading
-            val championsResponse = summonerRepository.getSummoner(name).body()
-            championsResponse?.let {
+            val summonerResponse = summonerRepository.getSummoner(name).body()
+            summonerResponse?.let {
                 _model.value = UiModelSummoner.Content(it)
             } ?: run {
                 _model.value = UiModelSummoner.Error
