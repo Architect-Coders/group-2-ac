@@ -5,8 +5,7 @@ import com.teamtwo.apilol.model.ChampionsRepository
 import com.teamtwo.apilol.model.champions.Champion
 import kotlinx.coroutines.launch
 
-class ChampionListViewModel(private val championsRepository: ChampionsRepository)
-    : ViewModel() {
+class ChampionListViewModel(private val championsRepository: ChampionsRepository) : ViewModel() {
 
     sealed class UiModel {
         object Loading : UiModel()

@@ -29,6 +29,7 @@
         <activity android:name=".items.ItemListActivity" />
         <activity android:name=".champions.ChampionListActivity" />
         <activity android:name=".champions.ChampionDetailActivity" />
+        <activity android:name=".summoners.SummonersDetailActivity" />
     </application>
 
 </manifest>
