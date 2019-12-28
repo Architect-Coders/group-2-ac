@@ -1,0 +1,31 @@
+package com.teamtwo.apilol.Sensor
+
+enum class CountryLanguage (val code: String){
+    US("en "),
+    CZ("cs"),
+    DE("de"),
+    GR("el"),
+    AU("en"),
+    GB("en"),
+    PH("en"),
+    SG("en"),
+    AR("es"),
+    ES("es"),
+    MX("es"),
+    FR("fr"),
+    HU("hu"),
+    ID("id"),
+    IT("it"),
+    JP("ja"),
+    KR("ko"),
+    PL("pl"),
+    BR("pt"),
+    RO("ro"),
+    RU("ru"),
+    TH("th"),
+    TR("tr"),
+    VN("vn"),
+    CN("zh"),
+    MY("zh"),
+    TW("zh")
+}

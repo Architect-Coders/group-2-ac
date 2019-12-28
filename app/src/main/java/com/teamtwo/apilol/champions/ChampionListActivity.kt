@@ -10,7 +10,6 @@ import com.teamtwo.apilol.BaseActivity
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.model.ChampionsRepository
 import com.teamtwo.apilol.champions.ChampionListViewModel.UiModel
-import com.teamtwo.apilol.toast
 import kotlinx.android.synthetic.main.activity_champion_list.*
 import kotlinx.android.synthetic.main.loading.*
 
@@ -29,7 +28,7 @@ class ChampionListActivity : BaseActivity(R.layout.activity_champion_list) {
         )[ChampionListViewModel::class.java]
 
         rvChampions.layoutManager = GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
-        adapter = ChampionsAdapter(viewModel::onMovieClicked)
+        adapter = ChampionsAdapter(viewModel::onChampionClicked)
         rvChampions.adapter = adapter
 
         viewModel.model.observe(this, Observer(::updateUi))

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/llChampionDetail"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/black"
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivChampionBackground"
@@ -15,6 +17,242 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/darksemitransparent"/>
+        android:background="@color/darksemitransparent" />
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hitpoints"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/midGuideline"
+        app:layout_constraintBottom_toTopOf="@id/tvHP"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvHP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="580"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toEndOf="@id/midGuideline"
+        app:layout_constraintBottom_toTopOf="@id/tvArmorTitle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mana points"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvMP"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvMP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="580"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvSpeedTitle"/>
+
+    <TextView
+        android:id="@+id/tvSpeedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Speed"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvArmor"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="580"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toEndOf="@id/midGuideline"
+        app:layout_constraintBottom_toTopOf="@id/tvSpellBlockTitle"/>
+
+    <TextView
+        android:id="@+id/tvArmorTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Armor"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/midGuideline"
+        app:layout_constraintBottom_toTopOf="@id/tvArmor"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvArmor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="580"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvAttackRangeTitle"/>
+
+    <TextView
+        android:id="@+id/tvSpellBlockTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spell block"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/midGuideline"
+        app:layout_constraintBottom_toTopOf="@id/tvSpellBlock"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvSpellBlock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="580"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toEndOf="@id/midGuideline"
+        app:layout_constraintBottom_toTopOf="@id/tvHPRegenTitle"/>
+
+    <TextView
+        android:id="@+id/tvAttackRangeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attack range"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvAttackRange"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvAttackRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="580"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvMPRegenTitle"/>
+
+    <TextView
+        android:id="@+id/tvHPRegenTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hit points regen."
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/midGuideline"
+        app:layout_constraintBottom_toTopOf="@id/tvHPRegen"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvHPRegen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="580"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toEndOf="@id/midGuideline"
+        app:layout_constraintBottom_toTopOf="@id/tvCriticTitle"/>
+
+    <TextView
+        android:id="@+id/tvMPRegenTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mana points regen."
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvMPRegen"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvMPRegen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="580"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvAttackDamageTitle"/>
+
+    <TextView
+        android:id="@+id/tvCriticTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Critic"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/midGuideline"
+        app:layout_constraintBottom_toTopOf="@id/tvCrit"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvCrit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="580"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/tvAttackSpeedTitle"
+        app:layout_constraintStart_toEndOf="@id/midGuideline" />
+
+    <TextView
+        android:id="@+id/tvAttackDamageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attack damage"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvAttackDamage"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvAttackDamage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/tvAttackSpeedTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="580" />
+
+    <TextView
+        android:id="@+id/tvAttackSpeedTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Attack speed"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvAttackSpeed"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvAttackSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="580" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/midGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

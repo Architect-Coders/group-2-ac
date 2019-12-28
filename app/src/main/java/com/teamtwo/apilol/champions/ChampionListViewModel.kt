@@ -1,25 +1,17 @@
 package com.teamtwo.apilol.champions
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.teamtwo.apilol.Scope
+import androidx.lifecycle.*
 import com.teamtwo.apilol.model.ChampionsRepository
 import com.teamtwo.apilol.model.champions.Champion
 import kotlinx.coroutines.launch
 
 class ChampionListViewModel(private val championsRepository: ChampionsRepository)
-    : ViewModel(), Scope by Scope.Impl() {
+    : ViewModel() {
 
     sealed class UiModel {
         object Loading : UiModel()
         class Content(val champions: List<Champion>): UiModel()
         class Navigation(val champion: Champion): UiModel()
-    }
-
-    init {
-        initScope()
     }
 
     private val _model = MutableLiveData<UiModel>()
@@ -30,7 +22,7 @@ class ChampionListViewModel(private val championsRepository: ChampionsRepository
     }
 
     private fun refresh(){
-        launch {
+        viewModelScope.launch {
             _model.value = UiModel.Loading
             val championsResponse = championsRepository.getChampions()
             val championList = championsResponse.body()?.data?.values?.toList()
@@ -38,13 +30,8 @@ class ChampionListViewModel(private val championsRepository: ChampionsRepository
         }
     }
 
-    fun onMovieClicked(champion: Champion){
+    fun onChampionClicked(champion: Champion){
         _model.value = UiModel.Navigation(champion)
-    }
-
-    override fun onCleared() {
-        destroyScope()
-        super.onCleared()
     }
 }
 
