@@ -1,6 +1,6 @@
-package com.teamtwo.apilol.champions
+package com.teamtwo.apilol.ui.champions
 
-import com.teamtwo.apilol.BaseActivity
+import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.loadUrl
 import com.teamtwo.apilol.model.champions.Champion

@@ -1,6 +1,5 @@
-package com.teamtwo.apilol.champions
+package com.teamtwo.apilol.ui.champions
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

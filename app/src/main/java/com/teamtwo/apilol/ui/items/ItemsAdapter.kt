@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.items
+package com.teamtwo.apilol.ui.items
 
 import android.view.View
 import android.view.ViewGroup

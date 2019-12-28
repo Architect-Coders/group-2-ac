@@ -1,6 +1,6 @@
-package com.teamtwo.apilol.items
+package com.teamtwo.apilol.ui.items
 
-import com.teamtwo.apilol.BaseActivity
+import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.loadUrl
 import com.teamtwo.apilol.model.items.Item
