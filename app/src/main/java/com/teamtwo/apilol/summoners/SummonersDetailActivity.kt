@@ -28,7 +28,7 @@ class SummonersDetailActivity : BaseActivity(R.layout.activity_summoner_detail) 
 
         viewModel.model.observe(this, Observer(::updateUi))
 
-        btnSeatch.setOnClickListener {
+        btnSearch.setOnClickListener {
             viewModel.reload(etSummoner.text.toString())
         }
 
