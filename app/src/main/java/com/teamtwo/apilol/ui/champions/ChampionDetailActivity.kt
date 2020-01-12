@@ -1,18 +1,26 @@
 package com.teamtwo.apilol.ui.champions
 
-import com.teamtwo.apilol.ui.base.BaseActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.loadUrl
-import com.teamtwo.apilol.model.champions.Champion
+import com.teamtwo.apilol.model.ChampionsRepository
+import com.teamtwo.apilol.model.database.entities.ChampionEntity
+import com.teamtwo.apilol.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_champion_detail.*
 
 class ChampionDetailActivity : BaseActivity(R.layout.activity_champion_detail) {
 
+    private lateinit var viewModel: ChampionDetailViewModel
+
     companion object {
-        const val BASE_URL_BACKGROUND = "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/"
+        const val BASE_URL_HEADER = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"
     }
 
-    override fun initListeners() {}
+    override fun initListeners() {
+        fabFav.setOnClickListener { viewModel.onFavouriteClicked() }
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
@@ -21,7 +29,23 @@ class ChampionDetailActivity : BaseActivity(R.layout.activity_champion_detail) {
 
     override fun onStart() {
         super.onStart()
-        val champion = intent.getParcelableExtra(this::class.java.canonicalName) as Champion
+
+        viewModel = ViewModelProviders.of(
+            this,
+            ChampionDetailViewModelFactory(
+                intent.getStringExtra(this::class.java.canonicalName),
+                ChampionsRepository(application as ApiLolAplication))
+        )[ChampionDetailViewModel::class.java]
+
+        viewModel.champion.observe(this, Observer(::updateUI))
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+    }
+
+    private fun updateUI(champion: ChampionEntity){
+
+        supportActionBar?.title = champion.name
 
         with(champion.stats){
             tvHP.text = "$hp"
@@ -37,10 +61,10 @@ class ChampionDetailActivity : BaseActivity(R.layout.activity_champion_detail) {
             tvAttackSpeed.text = "$attackspeed"
         }
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-
-        supportActionBar?.title = champion.name
-        ivChampionBackground.loadUrl(BASE_URL_BACKGROUND + champion.id + "_0.jpg")
+        ivChampionBackground.loadUrl(BASE_URL_HEADER + champion.id + "_0.jpg")
+        fabFav.setImageDrawable(
+            if (champion.favourite) getDrawable(R.drawable.ic_star_on)
+            else getDrawable(R.drawable.ic_star_off)
+        )
     }
 }

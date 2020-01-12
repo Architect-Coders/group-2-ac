@@ -20,7 +20,6 @@ data class Champion (
     val blurb: String,
     val info: Info,
     val image: Image,
-    val tags: List<String>,
     val partype: String,
     val stats: Stats
 ) : Parcelable
