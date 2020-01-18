@@ -1,5 +1,7 @@
 package com.teamtwo.apilol.model
 
+import com.example.data.RemoteDataSource
+import com.example.domain.Champion
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

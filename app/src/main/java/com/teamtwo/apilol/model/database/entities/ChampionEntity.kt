@@ -2,9 +2,9 @@ package com.teamtwo.apilol.model.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.teamtwo.apilol.model.champions.Image
-import com.teamtwo.apilol.model.champions.Info
-import com.teamtwo.apilol.model.champions.Stats
+import com.example.domain.Image
+import com.example.domain.Info
+import com.example.domain.Stats
 
 @Entity
 data class ChampionEntity(
