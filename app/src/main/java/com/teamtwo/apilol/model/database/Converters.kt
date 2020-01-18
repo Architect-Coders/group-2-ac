@@ -1,10 +1,10 @@
 package com.teamtwo.apilol.model.database
 
 import androidx.room.TypeConverter
+import com.example.domain.Image
+import com.example.domain.Info
+import com.example.domain.Stats
 import com.google.gson.Gson
-import com.teamtwo.apilol.model.champions.Image
-import com.teamtwo.apilol.model.champions.Info
-import com.teamtwo.apilol.model.champions.Stats
 
 
 class Converters {
