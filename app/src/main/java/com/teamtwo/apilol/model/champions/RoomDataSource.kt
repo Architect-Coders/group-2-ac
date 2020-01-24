@@ -31,31 +31,3 @@ class RoomDataSource(database: ApiLolDatabase) : LocalDataSource {
         dao.findChampionById(championId).toChampionDomain()
     }
 }
-
-fun ChampionEntity.toChampionDomain(): ChampionDomain = ChampionDomain(
-    id,
-    version,
-    key,
-    name,
-    title,
-    blurb,
-    info,
-    image,
-    partype,
-    stats,
-    favourite
-)
-
-fun ChampionDomain.toChampionEntity(): ChampionEntity = ChampionEntity(
-    version,
-    id,
-    key,
-    name,
-    title,
-    blurb,
-    info,
-    image,
-    partype,
-    stats,
-    favourite
-)
