@@ -12,73 +12,78 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivChampionBackground"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/darksemitransparent" />
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/marginSmall"
+        android:src="@mipmap/aatrox"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Hitpoints"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/midGuideline"
-        app:layout_constraintBottom_toTopOf="@id/tvHP"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/ivChampionBackground" />
 
     <TextView
         android:id="@+id/tvHP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        tools:text="580"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintStart_toEndOf="@id/midGuideline"
-        app:layout_constraintBottom_toTopOf="@id/tvArmorTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:text="580" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
+        android:layout_marginTop="16dp"
         android:text="Mana points"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvMP"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/ivChampionBackground" />
 
     <TextView
         android:id="@+id/tvMP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:textColor="@color/white"
-        tools:text="580"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvSpeedTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:text="580" />
 
     <TextView
         android:id="@+id/tvSpeedTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:text="Speed"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvArmor"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvMP" />
 
     <TextView
         android:id="@+id/tvSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        tools:text="580"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintStart_toEndOf="@id/midGuideline"
-        app:layout_constraintBottom_toTopOf="@id/tvSpellBlockTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvArmorTitle"
+        tools:text="580" />
 
     <TextView
         android:id="@+id/tvArmorTitle"
@@ -86,20 +91,20 @@
         android:layout_height="wrap_content"
         android:text="Armor"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/midGuideline"
-        app:layout_constraintBottom_toTopOf="@id/tvArmor"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvHP" />
 
     <TextView
         android:id="@+id/tvArmor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:textColor="@color/white"
-        tools:text="580"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvAttackRangeTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvSpeedTitle"
+        tools:text="580" />
 
     <TextView
         android:id="@+id/tvSpellBlockTitle"
@@ -107,41 +112,41 @@
         android:layout_height="wrap_content"
         android:text="Spell block"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/midGuideline"
-        app:layout_constraintBottom_toTopOf="@id/tvSpellBlock"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvSpeed" />
 
     <TextView
         android:id="@+id/tvSpellBlock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        tools:text="580"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintStart_toEndOf="@id/midGuideline"
-        app:layout_constraintBottom_toTopOf="@id/tvHPRegenTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvSpellBlockTitle"
+        tools:text="580" />
 
     <TextView
         android:id="@+id/tvAttackRangeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:text="Attack range"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvAttackRange"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvArmor" />
 
     <TextView
         android:id="@+id/tvAttackRange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:textColor="@color/white"
-        tools:text="580"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvMPRegenTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvAttackRangeTitle"
+        tools:text="580" />
 
     <TextView
         android:id="@+id/tvHPRegenTitle"
@@ -149,41 +154,41 @@
         android:layout_height="wrap_content"
         android:text="Hit points regen."
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/midGuideline"
-        app:layout_constraintBottom_toTopOf="@id/tvHPRegen"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvSpellBlock" />
 
     <TextView
         android:id="@+id/tvHPRegen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        tools:text="580"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintStart_toEndOf="@id/midGuideline"
-        app:layout_constraintBottom_toTopOf="@id/tvCriticTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvHPRegenTitle"
+        tools:text="580" />
 
     <TextView
         android:id="@+id/tvMPRegenTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:text="Mana points regen."
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvMPRegen"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvAttackRange" />
 
     <TextView
         android:id="@+id/tvMPRegen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:textColor="@color/white"
-        tools:text="580"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvAttackDamageTitle"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvMPRegenTitle"
+        tools:text="580" />
 
     <TextView
         android:id="@+id/tvCriticTitle"
@@ -191,62 +196,72 @@
         android:layout_height="wrap_content"
         android:text="Critic"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/midGuideline"
-        app:layout_constraintBottom_toTopOf="@id/tvCrit"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvHPRegen" />
 
     <TextView
         android:id="@+id/tvCrit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        tools:text="580"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@id/tvAttackSpeedTitle"
-        app:layout_constraintStart_toEndOf="@id/midGuideline" />
+        app:layout_constraintStart_toEndOf="@id/midGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/tvCriticTitle"
+        tools:text="580" />
 
     <TextView
         android:id="@+id/tvAttackDamageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:text="Attack damage"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvAttackDamage"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvMPRegen" />
 
     <TextView
         android:id="@+id/tvAttackDamage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@id/tvAttackSpeedTitle"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAttackDamageTitle"
         tools:text="580" />
 
     <TextView
         android:id="@+id/tvAttackSpeedTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:text="Attack speed"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tvAttackSpeed"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvAttackDamage" />
 
     <TextView
         android:id="@+id/tvAttackSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginSmall"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAttackSpeedTitle"
         tools:text="580" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_star_off"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/midGuideline"

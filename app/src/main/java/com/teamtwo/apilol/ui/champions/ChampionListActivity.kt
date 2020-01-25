@@ -6,9 +6,13 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import com.teamtwo.apilol.ui.base.BaseActivity
+import com.example.data.ChampionsRepository
+import com.example.usecases.GetChampions
+import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.R
-import com.teamtwo.apilol.model.ChampionsRepository
+import com.teamtwo.apilol.model.champions.RetrofitDataSource
+import com.teamtwo.apilol.model.champions.RoomDataSource
+import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.ui.champions.ChampionListViewModel.UiModel
 import kotlinx.android.synthetic.main.activity_champion_list.*
 import kotlinx.android.synthetic.main.loading.*
@@ -24,7 +28,14 @@ class ChampionListActivity : BaseActivity(R.layout.activity_champion_list) {
         supportActionBar?.title = "Champions"
 
         viewModel = ViewModelProviders.of(this,
-            ChampionListViewModelFactory(ChampionsRepository())
+            ChampionListViewModelFactory(
+                GetChampions(
+                    ChampionsRepository(
+                        RoomDataSource((application as ApiLolAplication).db),
+                        RetrofitDataSource()
+                    )
+                )
+            )
         )[ChampionListViewModel::class.java]
 
         rvChampions.layoutManager = GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
@@ -34,8 +45,12 @@ class ChampionListActivity : BaseActivity(R.layout.activity_champion_list) {
         viewModel.model.observe(this, Observer(::updateUi))
     }
 
-    override fun initListeners() {
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh()
     }
+
+    override fun initListeners() {}
 
     private fun updateUi(uiModel: UiModel) {
 
@@ -49,7 +64,7 @@ class ChampionListActivity : BaseActivity(R.layout.activity_champion_list) {
             is UiModel.Navigation ->
                 startActivity(
                     Intent(this, ChampionDetailActivity::class.java)
-                        .putExtra(ChampionDetailActivity::class.java.canonicalName, uiModel.champion)
+                        .putExtra(ChampionDetailActivity::class.java.canonicalName, uiModel.champion.id)
                 )
         }
     }

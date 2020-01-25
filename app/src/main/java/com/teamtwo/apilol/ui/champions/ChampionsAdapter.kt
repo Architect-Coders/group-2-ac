@@ -2,14 +2,18 @@ package com.teamtwo.apilol.ui.champions
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.Champion
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.inflate
 import com.teamtwo.apilol.loadUrl
-import com.teamtwo.apilol.model.champions.Champion
+import com.teamtwo.apilol.model.database.entities.ChampionEntity
 import kotlinx.android.synthetic.main.champion_list_item.view.*
 
-class ChampionsAdapter(private val listener: (Champion) -> Unit): RecyclerView.Adapter<ChampionsAdapter.ViewHolder>() {
+class ChampionsAdapter(
+    private val listener: (Champion) -> Unit
+): RecyclerView.Adapter<ChampionsAdapter.ViewHolder>() {
 
     var championList: List<Champion> = emptyList()
 
@@ -31,7 +35,14 @@ class ChampionsAdapter(private val listener: (Champion) -> Unit): RecyclerView.A
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(champion: Champion){
             itemView.tvChampionName.text = champion.name
+
+            if (champion.favourite) itemView.tvChampionName.showFavouriteIcon()
+            else itemView.tvChampionName.hideFavouriteIcon()
+
             itemView.ivChampion.loadUrl(SQUARE_BASE_URL + champion.image.full)
         }
+
+        private fun TextView.hideFavouriteIcon() = this.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
+        private fun TextView.showFavouriteIcon() = this.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_star_on, 0)
     }
 }

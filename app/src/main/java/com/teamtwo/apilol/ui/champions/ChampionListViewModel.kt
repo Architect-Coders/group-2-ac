@@ -1,11 +1,11 @@
 package com.teamtwo.apilol.ui.champions
 
 import androidx.lifecycle.*
-import com.teamtwo.apilol.model.ChampionsRepository
-import com.teamtwo.apilol.model.champions.Champion
+import com.example.domain.Champion
+import com.example.usecases.GetChampions
 import kotlinx.coroutines.launch
 
-class ChampionListViewModel(private val championsRepository: ChampionsRepository) : ViewModel() {
+class ChampionListViewModel(private val getChampions: GetChampions) : ViewModel() {
 
     sealed class UiModel {
         object Loading : UiModel()
@@ -14,18 +14,12 @@ class ChampionListViewModel(private val championsRepository: ChampionsRepository
     }
 
     private val _model = MutableLiveData<UiModel>()
+    val model: LiveData<UiModel> = _model
 
-    val model: LiveData<UiModel> get() {
-        if (_model.value == null) refresh()
-        return _model
-    }
-
-    private fun refresh(){
+    fun refresh(){
         viewModelScope.launch {
             _model.value = UiModel.Loading
-            val championsResponse = championsRepository.getChampions()
-            val championList = championsResponse.body()?.data?.values?.toList()
-            _model.value = UiModel.Content(championList ?: emptyList())
+            _model.value = UiModel.Content(getChampions.invoke())
         }
     }
 
@@ -34,7 +28,7 @@ class ChampionListViewModel(private val championsRepository: ChampionsRepository
     }
 }
 
-class ChampionListViewModelFactory(private val repository: ChampionsRepository) : ViewModelProvider.Factory {
+class ChampionListViewModelFactory(private val getChampions: GetChampions) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T
-            = ChampionListViewModel(repository) as T
+            = ChampionListViewModel(getChampions) as T
 }
