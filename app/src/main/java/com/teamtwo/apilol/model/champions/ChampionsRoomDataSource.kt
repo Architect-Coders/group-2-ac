@@ -1,13 +1,13 @@
 package com.teamtwo.apilol.model.champions
 
-import com.example.data.LocalDataSource
+import com.example.data.ChampionsLocalDataSource
 import com.teamtwo.apilol.model.database.ApiLolDatabase
 import com.teamtwo.apilol.model.database.entities.ChampionEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import com.example.domain.Champion as ChampionDomain
 
-class RoomDataSource(database: ApiLolDatabase) : LocalDataSource {
+class ChampionsRoomDataSource(database: ApiLolDatabase) : ChampionsLocalDataSource {
 
     private val dao = database.apiLolDao()
 

@@ -1,10 +1,10 @@
 package com.teamtwo.apilol.model.champions
 
-import com.example.data.RemoteDataSource
+import com.example.data.ChampionsRemoteDataSource
 import com.example.domain.Champion as ChampionDomain
 import com.teamtwo.apilol.model.LOLServiceManager
 
-class RetrofitDataSource: RemoteDataSource {
+class ChampionsRetrofitDataSource: ChampionsRemoteDataSource {
 
     override suspend fun getChampions(): List<ChampionDomain> {
         val championsResponse = LOLServiceManager().service.getChampions()
