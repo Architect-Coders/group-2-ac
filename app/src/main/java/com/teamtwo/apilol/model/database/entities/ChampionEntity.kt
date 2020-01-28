@@ -8,8 +8,9 @@ import com.example.domain.Stats
 
 @Entity
 data class ChampionEntity(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
     val version: String,
-    @PrimaryKey val id: String,
     val key: String,
     val name: String,
     val title: String,
