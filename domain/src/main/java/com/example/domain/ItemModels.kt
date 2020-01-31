@@ -7,12 +7,12 @@ data class ItemsResponse (
 )
 
 data class Item (
+    val id: String,
     val name: String,
     val description: String,
     val plaintext: String,
     val image: Img,
-    val gold: Gold,
-    val stats: Map<String,Double>
+    val gold: Gold
 )
 
 data class Img (

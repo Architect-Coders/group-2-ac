@@ -1,11 +1,11 @@
 package com.teamtwo.apilol.ui.items
 
 import androidx.lifecycle.*
-import com.teamtwo.apilol.model.ItemsRepository
-import com.teamtwo.apilol.model.items.Item
+import com.example.domain.Item
+import com.example.usecases.GetItems
 import kotlinx.coroutines.launch
 
-class ItemListViewModel(private val itemsRepository: ItemsRepository)
+class ItemListViewModel(private val getItems: GetItems)
     : ViewModel() {
 
     sealed class UiModel {
@@ -15,19 +15,12 @@ class ItemListViewModel(private val itemsRepository: ItemsRepository)
     }
 
     private val _model = MutableLiveData<UiModel>()
+    val model: LiveData<UiModel> = _model
 
-    val model: LiveData<UiModel>
-        get() {
-        if (_model.value == null) refresh()
-        return _model
-    }
-
-    private fun refresh(){
+    fun refresh(){
         viewModelScope.launch {
             _model.value = UiModel.Loading
-            val itemsResponse = itemsRepository.getItems()
-            val itemList = itemsResponse.body()?.data?.values?.toList()
-            _model.value = UiModel.Content(itemList ?: emptyList())
+            _model.value = UiModel.Content(getItems.invoke())
         }
     }
 
@@ -36,7 +29,7 @@ class ItemListViewModel(private val itemsRepository: ItemsRepository)
     }
 }
 
-class ItemListViewModelFactory(private val repository: ItemsRepository) : ViewModelProvider.Factory {
+class ItemListViewModelFactory(private val getItems: GetItems) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T
-            = ItemListViewModel(repository) as T
+            = ItemListViewModel(getItems) as T
 }

@@ -3,10 +3,10 @@ package com.teamtwo.apilol.ui.items
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.Item
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.inflate
 import com.teamtwo.apilol.loadUrl
-import com.teamtwo.apilol.model.items.Item
 import kotlinx.android.synthetic.main.item_list_item.view.*
 
 class ItemsAdapter(private val listener: (Item) -> Unit): RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
