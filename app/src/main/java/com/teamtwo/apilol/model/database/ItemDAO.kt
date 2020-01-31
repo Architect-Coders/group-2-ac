@@ -1,20 +1,23 @@
 package com.teamtwo.apilol.model.database
 
 import androidx.room.*
-import com.teamtwo.apilol.model.database.entities.items.ItemEntity
+import com.teamtwo.apilol.model.database.entities.ItemEntity
 
 @Dao
 interface ItemDAO {
 
     @Insert
-    fun insert(item: ItemEntity)
+    fun insertItem(item: ItemEntity)
+
+    @Query("SELECT * FROM ItemEntity")
+    fun getAllItems(): List<ItemEntity>
 
     @Query("SELECT * FROM itementity WHERE id = :id")
-    fun getById(id: Int): List<ItemEntity>
+    fun getByIdItem(id: Int): List<ItemEntity>
 
     @Update
-    fun update(item: ItemEntity)
+    fun updateItem(item: ItemEntity)
 
     @Delete
-    fun delete(item: ItemEntity)
+    fun deleteItem(item: ItemEntity)
 }

@@ -2,6 +2,7 @@ package com.teamtwo.apilol.model.database
 
 import androidx.room.*
 import com.teamtwo.apilol.model.database.entities.ChampionEntity
+import com.teamtwo.apilol.model.database.entities.ItemEntity
 
 @Dao
 interface ApilolDAO {
@@ -41,5 +42,23 @@ interface ApilolDAO {
 
     @Update
     fun updateChampion(champion: ChampionEntity)
+
+    @Insert
+    fun insertItem(item: List<ItemEntity>)
+
+    @Query("SELECT * FROM ItemEntity")
+    fun getAllItems(): List<ItemEntity>
+
+    @Query("SELECT * FROM ItemEntity WHERE id = :id")
+    fun getItemById(id: String): ItemEntity
+
+    @Query("SELECT COUNT(id) FROM ItemEntity")
+    fun getItemsRecordCount(): Int
+
+    @Update
+    fun updateItem(item: ItemEntity)
+
+    @Delete
+    fun deleteItem(item: ItemEntity)
 
 }
