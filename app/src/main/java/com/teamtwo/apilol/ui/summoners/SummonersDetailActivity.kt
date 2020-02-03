@@ -4,11 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.data.RemoteSummonerDataSource
+import com.example.data.SummonersRepository
+import com.example.domain.Summoner
+import com.example.usecases.GetSummoner
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.ui.summoners.SummonnerViewModel.UiModelSummoner
 import com.teamtwo.apilol.model.SummonerRepository
-import com.teamtwo.apilol.model.sumonners.Summoner
+import com.teamtwo.apilol.model.sumonners.RetrofitDataSource
 import com.teamtwo.apilol.toast
 import kotlinx.android.synthetic.main.activity_summoner_detail.*
 import kotlinx.android.synthetic.main.loading.*
@@ -22,8 +26,15 @@ class SummonersDetailActivity : BaseActivity(R.layout.activity_summoner_detail) 
 
         supportActionBar?.title = "Summoner"
 
+
         viewModel = ViewModelProviders.of(this,
-            SumonnerViewModelFactory(SummonerRepository())
+            SumonnerViewModelFactory(
+                GetSummoner(
+                    SummonersRepository(
+                        RetrofitDataSource()
+                    )
+                )
+            )
         )[SummonnerViewModel::class.java]
 
         viewModel.model.observe(this, Observer(::updateUi))

@@ -3,6 +3,7 @@ package com.teamtwo.apilol.model.items
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
+
 data class ItemsResponse (
     val type: String,
     val version: String,
