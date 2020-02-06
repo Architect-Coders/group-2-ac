@@ -1,12 +1,13 @@
 package com.teamtwo.apilol.ui.matches
 
 import androidx.lifecycle.*
-import com.teamtwo.apilol.model.GetFeaturedMatchesUseCase
+import com.example.domain.FeaturedGameInfo
+import com.example.usecases.GetMatches
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MatchViewModel (private val useCase: GetFeaturedMatchesUseCase): ViewModel() {
+class MatchViewModel (private val useCase: GetMatches): ViewModel() {
 
     init {
         requestRecentMatches()
@@ -18,14 +19,14 @@ class MatchViewModel (private val useCase: GetFeaturedMatchesUseCase): ViewModel
     private fun requestRecentMatches () {
         viewModelScope.launch {
             val response = withContext(Dispatchers.IO) {
-                useCase.execute()
+                useCase.invoke()
             }
-            _uiState.postValue(maptoUiEvent(response))
+            _uiState.postValue(maptoUiEvent(response.first))
         }
     }
 
-    private fun maptoUiEvent (data: List<FeaturedGameInfo>?): MatchListUiData {
-        return if (data == null || data.isEmpty()) {
+    private fun maptoUiEvent (data: List<FeaturedGameInfo>): MatchListUiData {
+        return if (data.isEmpty()) {
             MatchListUiData.Error("Ha ocurrido un error al recuperar las partidas.")
         } else {
             MatchListUiData.Data(MatchListUiModel(data))
@@ -44,11 +45,11 @@ class MatchViewModel (private val useCase: GetFeaturedMatchesUseCase): ViewModel
     )
 }
 
-class MatchViewModelFactory (private val useCase: GetFeaturedMatchesUseCase): ViewModelProvider.Factory {
+class MatchViewModelFactory (private val useCase: GetMatches): ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return modelClass
-            .getConstructor(GetFeaturedMatchesUseCase::class.java)
+            .getConstructor(GetMatches::class.java)
             .newInstance(useCase)
     }
 }

@@ -5,10 +5,15 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.data.MatchesRepository
+import com.example.usecases.GetMatches
+import com.google.gson.Gson
+import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
-import com.teamtwo.apilol.model.GetFeaturedMatchesUseCase
 import com.teamtwo.apilol.model.LOLServiceManager
+import com.teamtwo.apilol.model.champions.RetrofitDataSource
+import com.teamtwo.apilol.model.champions.RoomDataSource
 import com.teamtwo.apilol.toast
 import kotlinx.android.synthetic.main.activity_match_list.*
 
@@ -19,9 +24,10 @@ class MatchListActivity: BaseActivity(R.layout.activity_match_list) {
 
         ViewModelProviders.of(this,
             MatchViewModelFactory(
-                GetFeaturedMatchesUseCase(
-                    LOLServiceManager().apiService
-                )
+                GetMatches(MatchesRepository(
+                    RoomDataSource((application as ApiLolAplication).db),
+                    RetrofitDataSource()
+                ))
             )
         ).get(MatchViewModel::class.java)
     }
@@ -33,7 +39,7 @@ class MatchListActivity: BaseActivity(R.layout.activity_match_list) {
             layoutManager = LinearLayoutManager(this@MatchListActivity, LinearLayoutManager.VERTICAL, false)
             adapter = MatchListAdapter {
                 startActivity(Intent(this@MatchListActivity, MatchDetailActivity::class.java).apply {
-                    putExtra("match", it)
+                    putExtra("match", Gson().toJson(it))
                 })
             }
         }

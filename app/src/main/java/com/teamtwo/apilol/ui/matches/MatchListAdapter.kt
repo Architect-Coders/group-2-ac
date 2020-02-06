@@ -7,6 +7,8 @@ import androidx.core.text.buildSpannedString
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.FeaturedGameInfo
+import com.example.domain.Participant
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.inflate
 import kotlinx.android.extensions.LayoutContainer

@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
+import com.example.domain.FeaturedGameInfo
+import com.example.domain.Participant
+import com.google.gson.Gson
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.toast
@@ -26,9 +29,9 @@ class MatchDetailActivity: BaseActivity(R.layout.activity_match_detail) {
 
     private fun initWithData (intent: Intent) {
 
-        if (intent.hasExtra("match") && intent.getParcelableExtra<FeaturedGameInfo>("match") != null) {
+        if (intent.hasExtra("match") && intent.getStringExtra("match") != null) {
 
-            showDetailUi (intent.getParcelableExtra("match"))
+            showDetailUi (Gson().fromJson(intent.getStringExtra("match"), FeaturedGameInfo::class.java))
         } else {
             showErrorAndExit()
         }
