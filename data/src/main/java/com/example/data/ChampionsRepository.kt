@@ -22,15 +22,3 @@ class ChampionsRepository(
     suspend fun findChampionById(championId: String): Champion
             = localDataSource.findChampionById(championId)
 }
-
-interface LocalDataSource {
-    suspend fun areChampionsEmpty(): Boolean
-    suspend fun saveChampions(champions: List<Champion>)
-    suspend fun getChampions(): List<Champion>
-    suspend fun updateChampion(champion: Champion)
-    suspend fun findChampionById(championId: String): Champion
-}
-
-interface RemoteDataSource {
-    suspend fun getChampions(): List<Champion>
-}
