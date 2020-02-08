@@ -45,7 +45,7 @@ interface ApilolDAO {
     fun updateChampion(champion: ChampionEntity)
 
     //Matches
-    @Query("SELECT * FROM MatchesEntity")
+    @Query("SELECT * FROM MatchesEntity ORDER BY gameId DESC LIMIT 20")
     fun getOldMatches(): List<MatchesEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
