@@ -1,4 +1,4 @@
-package com.example.data
+package com.example.usecases
 
 import com.example.domain.Champion
 import com.example.domain.Image
