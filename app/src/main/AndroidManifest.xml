@@ -28,8 +28,8 @@
         <activity android:name="com.teamtwo.apilol.ui.matches.MatchDetailActivity"/>
         <activity android:name="com.teamtwo.apilol.ui.items.ItemDetailActivity" />
         <activity android:name="com.teamtwo.apilol.ui.items.ItemListActivity" />
-        <activity android:name="com.teamtwo.apilol.ui.champions.ChampionListActivity" />
-        <activity android:name="com.teamtwo.apilol.ui.champions.ChampionDetailActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.champions.list.ChampionListActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.champions.detail.ChampionDetailActivity" />
         <activity android:name="com.teamtwo.apilol.ui.summoners.SummonersDetailActivity" />
     </application>
 

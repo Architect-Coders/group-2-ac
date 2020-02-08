@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.ui.champions
+package com.teamtwo.apilol.ui.champions.detail
 
 import androidx.lifecycle.*
 import com.example.domain.Champion
@@ -33,5 +33,9 @@ class ChampionDetailViewModelFactory(
     private val updateChampion: UpdateChampion)
     : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T
-            = ChampionDetailViewModel(championId, getChampion, updateChampion) as T
+            = ChampionDetailViewModel(
+        championId,
+        getChampion,
+        updateChampion
+    ) as T
 }

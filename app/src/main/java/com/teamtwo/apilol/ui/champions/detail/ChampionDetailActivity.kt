@@ -1,22 +1,17 @@
-package com.teamtwo.apilol.ui.champions
+package com.teamtwo.apilol.ui.champions.detail
 
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.example.data.ChampionsRepository
 import com.example.domain.Champion
-import com.example.usecases.GetChampion
-import com.example.usecases.UpdateChampion
 import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.loadUrl
-import com.teamtwo.apilol.model.champions.RetrofitDataSource
-import com.teamtwo.apilol.model.champions.RoomDataSource
 import com.teamtwo.apilol.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_champion_detail.*
 
 class ChampionDetailActivity : BaseActivity(R.layout.activity_champion_detail) {
 
-    private lateinit var viewModel: ChampionDetailViewModel
+    private lateinit var component: ChampionDetailActivityComponent
+    private val viewModel by lazy { component.championDetailViewModel }
 
     companion object {
         const val BASE_URL_HEADER = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"
@@ -34,18 +29,9 @@ class ChampionDetailActivity : BaseActivity(R.layout.activity_champion_detail) {
     override fun onStart() {
         super.onStart()
 
-        val championsRepository = ChampionsRepository(
-            RoomDataSource((application as ApiLolAplication).db),
-            RetrofitDataSource()
+        component = (application as ApiLolAplication).championsComponent.plus(
+            ChampionDetailActivityModule(intent.getStringExtra(this::class.java.canonicalName))
         )
-        viewModel = ViewModelProviders.of(
-            this,
-            ChampionDetailViewModelFactory(
-                intent.getStringExtra(this::class.java.canonicalName),
-                GetChampion(championsRepository),
-                UpdateChampion(championsRepository)
-            )
-        )[ChampionDetailViewModel::class.java]
 
         viewModel.champion.observe(this, Observer(::updateUI))
 

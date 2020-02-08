@@ -3,8 +3,8 @@ package com.example.data
 import com.example.domain.FeaturedGameInfo
 
 class MatchesRepository (
-    private val localDataSource: LocalDataSource,
-    private val remoteDataSource: RemoteDataSource
+    private val localDataSource: MatchesLocalDataSource,
+    private val remoteDataSource: MatchesRemoteDataSource
 ) {
 
     companion object {
@@ -31,4 +31,14 @@ class MatchesRepository (
             emptyList()
         }
     }
+}
+
+interface MatchesLocalDataSource {
+    suspend fun saveMatches(matches: List<FeaturedGameInfo>)
+    suspend fun getOldMatches(): List<FeaturedGameInfo>
+    suspend fun hasOldMatches(): Boolean
+}
+
+interface MatchesRemoteDataSource {
+    suspend fun getMatches(apiKey: String): List<FeaturedGameInfo>
 }

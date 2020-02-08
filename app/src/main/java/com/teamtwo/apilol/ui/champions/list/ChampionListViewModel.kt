@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.ui.champions
+package com.teamtwo.apilol.ui.champions.list
 
 import androidx.lifecycle.*
 import com.example.domain.Champion
@@ -18,13 +18,18 @@ class ChampionListViewModel(private val getChampions: GetChampions) : ViewModel(
 
     fun refresh(){
         viewModelScope.launch {
-            _model.value = UiModel.Loading
-            _model.value = UiModel.Content(getChampions.invoke())
+            _model.value =
+                UiModel.Loading
+            _model.value =
+                UiModel.Content(
+                    getChampions.invoke()
+                )
         }
     }
 
     fun onChampionClicked(champion: Champion){
-        _model.value = UiModel.Navigation(champion)
+        _model.value =
+            UiModel.Navigation(champion)
     }
 }
 

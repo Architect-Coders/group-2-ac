@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.model.champions
+package com.teamtwo.apilol.model.matches
 
 import com.example.domain.*
 import com.teamtwo.apilol.Queues

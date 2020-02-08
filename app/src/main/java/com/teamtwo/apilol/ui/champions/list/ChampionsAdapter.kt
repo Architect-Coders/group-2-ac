@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.ui.champions
+package com.teamtwo.apilol.ui.champions.list
 
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +8,6 @@ import com.example.domain.Champion
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.inflate
 import com.teamtwo.apilol.loadUrl
-import com.teamtwo.apilol.model.database.entities.ChampionEntity
 import kotlinx.android.synthetic.main.champion_list_item.view.*
 
 class ChampionsAdapter(
@@ -24,7 +23,12 @@ class ChampionsAdapter(
     override fun getItemCount() = championList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-            = ViewHolder(parent.inflate(R.layout.champion_list_item, false))
+            = ViewHolder(
+        parent.inflate(
+            R.layout.champion_list_item,
+            false
+        )
+    )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val champion = championList[position]

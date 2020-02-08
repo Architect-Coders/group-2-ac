@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.teamtwo.apilol.ui.spells.SpellsLsitActivity
 import com.teamtwo.apilol.ui.matches.MatchListActivity
 import com.teamtwo.apilol.ui.items.ItemListActivity
-import com.teamtwo.apilol.ui.champions.ChampionListActivity
+import com.teamtwo.apilol.ui.champions.list.ChampionListActivity
 import com.teamtwo.apilol.ui.summoners.SummonersDetailActivity
 import android.app.Application
 import com.teamtwo.apilol.R
