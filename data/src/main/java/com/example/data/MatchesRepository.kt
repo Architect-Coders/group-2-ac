@@ -7,13 +7,9 @@ class MatchesRepository (
     private val remoteDataSource: MatchesRemoteDataSource
 ) {
 
-    companion object {
-        const val apiKey = ""
-    }
-
     suspend fun getMatches(): Pair<List<FeaturedGameInfo>, List<FeaturedGameInfo>> {
 
-        val recentMatches = remoteDataSource.getMatches(apiKey).also {
+        val recentMatches = remoteDataSource.getMatches().also {
             saveRequestedMatches(it)
         }
 
@@ -40,5 +36,5 @@ interface MatchesLocalDataSource {
 }
 
 interface MatchesRemoteDataSource {
-    suspend fun getMatches(apiKey: String): List<FeaturedGameInfo>
+    suspend fun getMatches(): List<FeaturedGameInfo>
 }

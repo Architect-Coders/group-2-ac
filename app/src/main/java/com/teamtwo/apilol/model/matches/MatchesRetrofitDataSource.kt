@@ -4,9 +4,9 @@ import com.example.data.MatchesRemoteDataSource
 import com.example.domain.FeaturedGameInfo
 import com.teamtwo.apilol.model.LOLServiceManager
 
-class MatchesRetrofitDataSource: MatchesRemoteDataSource {
+class MatchesRetrofitDataSource (private val apiKey: String): MatchesRemoteDataSource {
 
-    override suspend fun getMatches(apiKey: String): List<FeaturedGameInfo> {
+    override suspend fun getMatches(): List<FeaturedGameInfo> {
         val matches = LOLServiceManager().apiService.featuredGamesAsync(apiKey)
         return matches.body()?.mapResponseData() ?: emptyList()
     }
