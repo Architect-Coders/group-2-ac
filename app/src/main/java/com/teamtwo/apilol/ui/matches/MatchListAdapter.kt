@@ -4,6 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
+import androidx.core.text.underline
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,32 +14,81 @@ import com.teamtwo.apilol.R
 import com.teamtwo.apilol.inflate
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.cell_featured_match.*
+import kotlinx.android.synthetic.main.cell_match_type.*
 
 class MatchListAdapter(private val listener: (FeaturedGameInfo) -> Unit)
-    : ListAdapter<FeaturedGameInfo, MatchListAdapter.ViewHolder>(DIFF_CALLBACK) {
+    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    private val items: MutableList<ListItem> = mutableListOf()
 
-        val view = parent.inflate(R.layout.cell_featured_match)
-        return ViewHolder(view, listener)
+    fun setData(recentItems: List<FeaturedGameInfo>, oldItems: List<FeaturedGameInfo>) {
+
+        items.clear()
+        if (recentItems.isNotEmpty()) {
+            items.add(HeaderItem("Partidas recientes"))
+            items.addAll(recentItems.map { RowItem(it, true) })
+        }
+        items.add(HeaderItem("Partidas pasadas"))
+        items.addAll(oldItems.map { RowItem(it, false) })
+
+        notifyDataSetChanged()
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(getItem(position))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
+        return if (viewType == 0) {
+            val view = parent.inflate(R.layout.cell_match_type)
+            HeaderViewHolder(view)
+        } else {
+            val view = parent.inflate(R.layout.cell_featured_match)
+            RowViewHolder(view, listener)
+        }
     }
 
-    class ViewHolder (override val containerView: View,
-                      private val listener: (FeaturedGameInfo) -> Unit): RecyclerView.ViewHolder(containerView), LayoutContainer {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        fun bindItem (gameInfo: FeaturedGameInfo) {
-
-            containerView.setOnClickListener { listener.invoke(gameInfo) }
-            gameIdText.text = gameInfo.gameId.toString()
-            participantsText.text = prepareParticipants(gameInfo.participants)
+        if (items.isEmpty()) {
+            return
         }
 
-        private fun prepareParticipants (participants: List<Participant>): CharSequence {
+        when (holder) {
+            is HeaderViewHolder -> holder.bindHeader(items[position])
+            is RowViewHolder -> holder.bindItem(items[position])
+        }
+    }
+
+    override fun getItemCount(): Int = items.size
+
+    override fun getItemViewType(position: Int): Int {
+        if (items.isEmpty()) {
+            return 0
+        }
+        return if (items[position].isHeader) 0 else 1
+    }
+
+    class RowViewHolder (override val containerView: View,
+                         private val listener: (FeaturedGameInfo) -> Unit): RecyclerView.ViewHolder(containerView), LayoutContainer {
+
+        fun bindItem (item: ListItem) {
+
+            check(item is RowItem) { "Incorrect type of item received." }
+
+            with(item.gameInfo) {
+                containerView.setOnClickListener { listener.invoke(this) }
+                gameIdText.text = "${this.gameMode} - ${this.gameType}"
+                participantGroup1.text = prepareParticipants(this.participants.filter { it.teamId == 100L }, 1)
+                participantGroup2.text = prepareParticipants(this.participants.filter { it.teamId == 200L }, 2)
+            }
+        }
+
+        private fun prepareParticipants (participants: List<Participant>, group: Int): CharSequence {
             return buildSpannedString {
+                underline {
+                    bold {
+                        append("Grupo $group")
+                    }
+                }
+                appendln()
                 participants.forEach {
                     append(it.summonerName + " ")
                     bold { "(${it.championId})" }
@@ -48,18 +98,29 @@ class MatchListAdapter(private val listener: (FeaturedGameInfo) -> Unit)
         }
     }
 
-    companion object {
-        val DIFF_CALLBACK = object: DiffUtil.ItemCallback<FeaturedGameInfo>() {
+    class HeaderViewHolder (override val containerView: View): RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-            override fun areItemsTheSame(oldItem: FeaturedGameInfo,
-                                         newItem: FeaturedGameInfo): Boolean {
-                return oldItem.gameId == newItem.gameId
+        fun bindHeader (item: ListItem) {
+
+            check(item is HeaderItem) { "Incorrect type of item received." }
+
+            with(item) {
+                headerTitle.text = this.title
             }
 
-            override fun areContentsTheSame(oldItem: FeaturedGameInfo,
-                                            newItem: FeaturedGameInfo): Boolean {
-                return oldItem == newItem
-            }
         }
     }
+
+    open class ListItem (
+        val isHeader: Boolean
+    )
+
+    data class HeaderItem(
+        val title: String
+    ): ListItem(isHeader = true)
+
+    data class RowItem (
+        val gameInfo: FeaturedGameInfo,
+        val isRecent: Boolean
+    ): ListItem(isHeader = false)
 }

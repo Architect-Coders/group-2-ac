@@ -53,9 +53,13 @@ class MatchListActivity: BaseActivity(R.layout.activity_match_list) {
     private fun manageState (uiState: MatchViewModel.MatchListUiData) {
         when (uiState) {
             is MatchViewModel.MatchListUiData.Loading -> {}
-            is MatchViewModel.MatchListUiData.Error -> toast(uiState.error)
+            is MatchViewModel.MatchListUiData.Error -> {
+                toast(uiState.error)
+                (recyclerView?.adapter as MatchListAdapter).setData(emptyList(), uiState.oldMatches)
+
+            }
             is MatchViewModel.MatchListUiData.Data -> {
-                (recyclerView?.adapter as MatchListAdapter).submitList(uiState.data.gamesList)
+                (recyclerView?.adapter as MatchListAdapter).setData(uiState.data.recentMatches, uiState.data.oldMatches)
             }
         }
     }

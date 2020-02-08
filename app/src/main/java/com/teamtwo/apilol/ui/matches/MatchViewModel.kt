@@ -21,27 +21,28 @@ class MatchViewModel (private val useCase: GetMatches): ViewModel() {
             val response = withContext(Dispatchers.IO) {
                 useCase.invoke()
             }
-            _uiState.postValue(maptoUiEvent(response.first))
+            _uiState.postValue(mapToUiEvent(response.first, response.second))
         }
     }
 
-    private fun maptoUiEvent (data: List<FeaturedGameInfo>): MatchListUiData {
-        return if (data.isEmpty()) {
-            MatchListUiData.Error("Ha ocurrido un error al recuperar las partidas.")
+    private fun mapToUiEvent (recentData: List<FeaturedGameInfo>, oldData: List<FeaturedGameInfo>): MatchListUiData {
+        return if (recentData.isEmpty()) {
+            MatchListUiData.Error("Ha ocurrido un error al recuperar las partidas.", oldData)
         } else {
-            MatchListUiData.Data(MatchListUiModel(data))
+            MatchListUiData.Data(MatchListUiModel(recentData, oldData))
         }
     }
 
     sealed class MatchListUiData {
         object Loading: MatchListUiData()
         class Data (val data: MatchListUiModel): MatchListUiData()
-        class Error (val error: String): MatchListUiData()
+        class Error (val error: String, val oldMatches: List<FeaturedGameInfo>): MatchListUiData()
 
     }
 
     data class MatchListUiModel (
-        val gamesList: List<FeaturedGameInfo>
+        val recentMatches: List<FeaturedGameInfo>,
+        val oldMatches: List<FeaturedGameInfo>
     )
 }
 
