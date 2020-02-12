@@ -12,7 +12,7 @@ class RoomDataSource(database: ApiLolDatabase) : LocalDataSourceItems {
     private val dao = database.apiLolDao()
 
     override suspend fun itemsExists(): Boolean = withContext(Dispatchers.IO) {
-        dao.getItemsRecordCount() > 0
+        dao.getItemsRecordCount() <= 0
     }
 
     override suspend fun saveItems(items: List<ItemDomain>) = withContext(Dispatchers.IO) {

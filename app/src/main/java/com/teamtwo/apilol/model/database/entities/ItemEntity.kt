@@ -7,8 +7,8 @@ import com.example.domain.Img
 
 @Entity
 data class ItemEntity(
-    @PrimaryKey (autoGenerate = true)
-    val id: Int,
+    @PrimaryKey
+    val id: String,
     val name: String,
     val description: String,
     val plaintext: String,
