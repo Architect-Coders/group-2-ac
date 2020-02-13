@@ -1,12 +1,13 @@
 package com.example.data
 import com.example.domain.Item
 
+
 class ItemsRepository(
     private val localDataSourceItems: LocalDataSourceItems,
     private val remoteDataSourceItems: RemoteDataSourceItems
 ){
     suspend fun getItems(): List<Item> {
-        if (localDataSourceItems.itemsExists()){
+        if (!localDataSourceItems.itemsExists()){
             val items = remoteDataSourceItems.getItems()
             localDataSourceItems.saveItems(items)
         }

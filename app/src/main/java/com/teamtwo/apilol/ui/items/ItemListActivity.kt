@@ -45,6 +45,11 @@ class ItemListActivity : BaseActivity(R.layout.activity_item_list) {
         viewModel.model.observe(this, Observer(::updateUi))
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.refresh()
+    }
+
     override fun initListeners() {
     }
 

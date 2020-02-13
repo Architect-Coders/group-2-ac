@@ -7,7 +7,7 @@ import com.teamtwo.apilol.model.LOLServiceManager
 class RetrofitDataSource: RemoteDataSourceItems {
 
     override suspend fun getItems(): List<ItemDomain> {
-        val itemsResponse = LOLServiceManager().service.getAllItems("es-ES")
+        val itemsResponse = LOLServiceManager().service.getAllItems("es_ES")
         return itemsResponse.body()?.data?.values?.toList() ?: emptyList()
     }
 }

@@ -7,7 +7,7 @@ data class ItemsResponse (
 )
 
 data class Item (
-    val id: String,
+    val id: Int,
     val name: String,
     val description: String,
     val plaintext: String,
