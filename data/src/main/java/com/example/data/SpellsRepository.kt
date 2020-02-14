@@ -16,7 +16,7 @@ class SpellsRepository(private val localDataSource:SpellsLocalDataSource,
 }
 
 interface SpellsLocalDataSource {
-    suspend fun saveSpells(matches: List<Spell>)
+    suspend fun saveSpells(spells: List<Spell>)
     suspend fun isSpellsEmpty(): Boolean
     suspend fun getSpells(): List<Spell>
 
