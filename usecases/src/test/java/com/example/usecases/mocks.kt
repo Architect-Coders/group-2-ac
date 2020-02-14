@@ -1,9 +1,6 @@
 package com.example.usecases
 
-import com.example.domain.Champion
-import com.example.domain.Image
-import com.example.domain.Info
-import com.example.domain.Stats
+import com.example.domain.*
 
 val localChampion = Champion(
     "id",
@@ -36,4 +33,23 @@ val localChampion = Champion(
         0.0,
         0.0),
     false
+)
+
+val localItem = Item(
+    0,
+    "",
+    "",
+    "",
+    Img(
+        "",
+        "",
+        0,
+        0,
+        0,
+        0
+    ),
+    Gold(
+        0,
+        0
+    )
 )

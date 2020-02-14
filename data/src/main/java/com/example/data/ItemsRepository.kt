@@ -19,7 +19,7 @@ class ItemsRepository(
         localDataSourceItems.updateItem(item)
     }
 
-    suspend fun findItemById(itemId: String): Item
+    suspend fun findItemById(itemId: Int): Item
             = localDataSourceItems.findItemById(itemId)
 }
 
@@ -28,7 +28,7 @@ interface LocalDataSourceItems {
     suspend fun saveItems(items: List<Item>)
     suspend fun getItems(): List<Item>
     suspend fun updateItem(item: Item)
-    suspend fun findItemById(itemId: String): Item
+    suspend fun findItemById(itemId: Int): Item
 }
 
 interface RemoteDataSourceItems {
