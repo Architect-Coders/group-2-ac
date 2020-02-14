@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.teamtwo.apilol.ui.spells.SpellsLsitActivity
 import com.teamtwo.apilol.ui.matches.MatchListActivity
-import com.teamtwo.apilol.ui.items.ItemListActivity
+import com.teamtwo.apilol.ui.items.list.ItemListActivity
 import com.teamtwo.apilol.ui.summoners.SummonersDetailActivity
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.ui.base.BaseActivity
@@ -35,7 +35,8 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         }
 
         btnDavid.setOnClickListener {
-            startActivity(Intent(this,ItemListActivity::class.java))
+            startActivity(Intent(this,
+                ItemListActivity::class.java))
         }
       
     }

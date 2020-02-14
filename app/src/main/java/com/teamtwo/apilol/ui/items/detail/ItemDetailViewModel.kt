@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.ui.items
+package com.teamtwo.apilol.ui.items.detail
 
 import androidx.lifecycle.*
 import com.example.domain.Item
@@ -24,5 +24,8 @@ class ItemDetailViewModelFactory(
     private val itemId: String,
     private val getItem: GetItem) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T
-            = ItemDetailViewModel(itemId, getItem) as T
+            = ItemDetailViewModel(
+        itemId,
+        getItem
+    ) as T
 }

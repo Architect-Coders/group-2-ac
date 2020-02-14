@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.ui.items
+package com.teamtwo.apilol.ui.items.list
 
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +20,12 @@ class ItemsAdapter(private val listener: (Item) -> Unit): RecyclerView.Adapter<I
     override fun getItemCount() = itemList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-            = ViewHolder(parent.inflate(R.layout.item_list_item, false))
+            = ViewHolder(
+        parent.inflate(
+            R.layout.item_list_item,
+            false
+        )
+    )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = itemList[position]

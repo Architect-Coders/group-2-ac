@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.ui.items
+package com.teamtwo.apilol.ui.items.list
 
 import androidx.lifecycle.*
 import com.example.domain.Item
@@ -19,13 +19,20 @@ class ItemListViewModel(private val getItems: GetItems)
 
     fun refresh(){
         viewModelScope.launch {
-            _model.value = UiModel.Loading
-            _model.value = UiModel.Content(getItems.invoke())
+            _model.value =
+                UiModel.Loading
+            _model.value =
+                UiModel.Content(
+                    getItems.invoke()
+                )
         }
     }
 
     fun onItemClicked(item: Item){
-        _model.value = UiModel.Navigation(item)
+        _model.value =
+            UiModel.Navigation(
+                item
+            )
     }
 }
 
