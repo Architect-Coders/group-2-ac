@@ -27,7 +27,6 @@ class RoomDataSource(database: ApiLolDatabase) : LocalDataSourceItems {
         dao.updateItem(item.toItemEntity())
     }
 
-    override suspend fun findItemById(itemId: String): ItemDomain = withContext(Dispatchers.IO){
-        dao.getItemById(itemId).toItemDomain()
-    }
+    override suspend fun findItemById(itemId: String)= withContext(Dispatchers.IO) {
+        dao.getItemById(itemId).toItemDomain()}
 }

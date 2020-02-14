@@ -5,6 +5,6 @@ import com.example.domain.Item
 
 class GetItem(private val itemsRepository: ItemsRepository) {
 
-    suspend fun invoke(itemId: Int): Item
+    suspend fun invoke(itemId: String): Item
             = itemsRepository.findItemById(itemId)
 }
