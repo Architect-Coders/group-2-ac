@@ -3,13 +3,13 @@ package com.teamtwo.apilol.ui.champions.detail
 import androidx.lifecycle.*
 import com.example.domain.Champion
 import com.example.usecases.GetChampion
-import com.example.usecases.UpdateChampion
+import com.example.usecases.UpdateFavouriteChampion
 import kotlinx.coroutines.launch
 
 class ChampionDetailViewModel(
     private val championId: String,
     private val getChampion: GetChampion,
-    private val updateChampion: UpdateChampion) : ViewModel() {
+    private val updateFavouriteChampion: UpdateFavouriteChampion) : ViewModel() {
 
     private val _champion = MutableLiveData<Champion>()
     val champion: LiveData<Champion>
@@ -19,7 +19,7 @@ class ChampionDetailViewModel(
         }
 
     fun onFavouriteClicked() = viewModelScope.launch {
-        _champion.value?.let { _champion.value = updateChampion.invoke(it) }
+        _champion.value?.let { _champion.value = updateFavouriteChampion.invoke(it) }
     }
 
     private fun findChampionById(championId: String) = viewModelScope.launch {
@@ -30,12 +30,12 @@ class ChampionDetailViewModel(
 class ChampionDetailViewModelFactory(
     private val championId: String,
     private val getChampion: GetChampion,
-    private val updateChampion: UpdateChampion)
+    private val updateFavouriteChampion: UpdateFavouriteChampion)
     : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T
             = ChampionDetailViewModel(
         championId,
         getChampion,
-        updateChampion
+        updateFavouriteChampion
     ) as T
 }

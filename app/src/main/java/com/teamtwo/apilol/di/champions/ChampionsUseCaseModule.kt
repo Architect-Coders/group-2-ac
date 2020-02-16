@@ -3,7 +3,7 @@ package com.teamtwo.apilol.di.champions
 import com.example.data.ChampionsRepository
 import com.example.usecases.GetChampion
 import com.example.usecases.GetChampions
-import com.example.usecases.UpdateChampion
+import com.example.usecases.UpdateFavouriteChampion
 import dagger.Module
 import dagger.Provides
 
@@ -20,6 +20,6 @@ class ChampionsUseCaseModule {
 
     @Provides
     fun updateChampionProvider(championsRepository: ChampionsRepository)
-            = UpdateChampion(championsRepository)
+            = UpdateFavouriteChampion(championsRepository)
 
 }

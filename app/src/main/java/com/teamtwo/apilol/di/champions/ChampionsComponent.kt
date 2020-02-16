@@ -3,10 +3,8 @@ package com.teamtwo.apilol.di.champions
 import android.app.Application
 import com.teamtwo.apilol.ui.champions.detail.ChampionDetailActivityComponent
 import com.teamtwo.apilol.ui.champions.detail.ChampionDetailActivityModule
-import com.teamtwo.apilol.ui.champions.detail.ChampionDetailViewModel
 import com.teamtwo.apilol.ui.champions.list.ChampionListActivityComponent
 import com.teamtwo.apilol.ui.champions.list.ChampionListActivityModule
-import com.teamtwo.apilol.ui.champions.list.ChampionListViewModel
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
