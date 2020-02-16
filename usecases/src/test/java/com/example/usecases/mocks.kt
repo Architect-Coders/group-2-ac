@@ -4,6 +4,8 @@ import com.example.domain.Champion
 import com.example.domain.Image
 import com.example.domain.Info
 import com.example.domain.Stats
+import com.example.domain.FeaturedGameInfo
+import com.example.domain.Observer
 
 val localChampion = Champion(
     "id",
@@ -36,4 +38,18 @@ val localChampion = Champion(
         0.0,
         0.0),
     false
+)
+
+val localMatch = FeaturedGameInfo(
+    0L,
+    0L,
+    "",
+    "",
+    0L,
+    "",
+    emptyList(),
+    Observer(""),
+    emptyList(),
+    0L,
+    null
 )

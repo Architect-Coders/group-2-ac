@@ -29,6 +29,8 @@ class MatchListActivity: BaseActivity(R.layout.activity_match_list) {
                 })
             }
         }
+
+        viewModel.requestRecentMatches()
     }
 
     override fun initListeners() {

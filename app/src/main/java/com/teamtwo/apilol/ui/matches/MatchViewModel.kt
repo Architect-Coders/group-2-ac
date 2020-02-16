@@ -9,19 +9,17 @@ import kotlinx.coroutines.withContext
 
 class MatchViewModel (private val useCase: GetMatches): ViewModel() {
 
-    init {
-        requestRecentMatches()
-    }
-
     private val _uiState = MutableLiveData<MatchListUiData>()
     val uiState: LiveData<MatchListUiData> = _uiState
 
-    private fun requestRecentMatches () {
+    fun requestRecentMatches () {
+        _uiState.value = MatchListUiData.Loading()
+
         viewModelScope.launch {
             val response = withContext(Dispatchers.IO) {
                 useCase.invoke()
             }
-            _uiState.postValue(mapToUiEvent(response.first, response.second))
+            _uiState.value = mapToUiEvent(response.first, response.second)
         }
     }
 
@@ -34,9 +32,9 @@ class MatchViewModel (private val useCase: GetMatches): ViewModel() {
     }
 
     sealed class MatchListUiData {
-        object Loading: MatchListUiData()
-        class Data (val data: MatchListUiModel): MatchListUiData()
-        class Error (val error: String, val oldMatches: List<FeaturedGameInfo>): MatchListUiData()
+        data class Loading (val loading: String = "loading"): MatchListUiData()
+        data class Data (val data: MatchListUiModel): MatchListUiData()
+        data class Error (val error: String, val oldMatches: List<FeaturedGameInfo>): MatchListUiData()
 
     }
 
