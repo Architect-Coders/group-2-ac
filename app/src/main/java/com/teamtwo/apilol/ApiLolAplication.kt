@@ -13,8 +13,9 @@ import com.teamtwo.apilol.di.matches.MatchesComponent
 class ApiLolAplication : Application() {
 
     lateinit var championsComponent: ChampionsComponent
-    lateinit var spellsComponent: SpellsComponent
         private set
+
+    lateinit var spellsComponent: SpellsComponent
         private set
 
     lateinit var matchesComponent: MatchesComponent
