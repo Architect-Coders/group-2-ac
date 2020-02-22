@@ -62,9 +62,9 @@ class ItemsRepositoryTest {
     @Test
     fun `findItemById calls findItemById from localDataSource`(){
         runBlocking {
-            itemsRepository.findItemById(0)
+            itemsRepository.findItemById("0")
 
-            verify(itemsLocalDataSource).findItemById(0)
+            verify(itemsLocalDataSource).findItemById("0")
         }
     }
 

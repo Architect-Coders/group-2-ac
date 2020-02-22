@@ -32,8 +32,8 @@ class ChampionsAppModule {
     fun remoteDataSourceProvider(lolServiceManager: LOLServiceManager): ChampionsRemoteDataSource
             = ChampionsRetrofitDataSource(lolServiceManager)
 
-    val baseUrl = "https://ddragon.leagueoflegends.com/cdn/9.23.1/"
-    val apiUrl = "https://euw1.api.riotgames.com/lol/"
+    private val baseUrl = "https://ddragon.leagueoflegends.com/cdn/9.23.1/"
+    private val apiUrl = "https://euw1.api.riotgames.com/lol/"
 
     @Provides
     @Singleton
