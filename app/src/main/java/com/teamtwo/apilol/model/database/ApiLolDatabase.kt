@@ -11,7 +11,8 @@ import com.teamtwo.apilol.model.database.entities.MatchesEntity
 @Database(entities = [
     ChampionEntity::class,
     SpellsEntity::class,
-    MatchesEntity::class
+    MatchesEntity::class,
+    ItemEntity::class
 ], version = 1)
 @TypeConverters(Converters::class)
 abstract class ApiLolDatabase : RoomDatabase() {
