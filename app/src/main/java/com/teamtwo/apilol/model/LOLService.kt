@@ -1,10 +1,6 @@
 package com.teamtwo.apilol.model
 
-import com.example.domain.ChampionsResponse
-import com.example.domain.FeaturedGamesResponse
-import com.example.domain.ItemsResponse
-import com.example.domain.SpellsResponseModel
-import com.teamtwo.apilol.model.sumonners.Summoner
+import com.example.domain.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header

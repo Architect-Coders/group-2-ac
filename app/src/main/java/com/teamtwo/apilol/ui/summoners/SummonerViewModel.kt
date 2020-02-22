@@ -1,8 +1,8 @@
 package com.teamtwo.apilol.ui.summoners
 
 import androidx.lifecycle.*
+import com.example.domain.Summoner
 import com.teamtwo.apilol.model.SummonerRepository
-import com.teamtwo.apilol.model.sumonners.Summoner
 import kotlinx.coroutines.launch
 
 class SummonnerViewModel(private val summonerRepository: SummonerRepository) : ViewModel() {

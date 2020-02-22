@@ -67,3 +67,13 @@ val localMatch = FeaturedGameInfo(
     0L,
     null
 )
+
+
+val localSummoner = Summoner(
+    0,
+    "",
+    0,
+    "",
+    "",
+    0L
+)
