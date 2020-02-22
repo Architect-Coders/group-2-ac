@@ -5,7 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class LOLServiceManager {
+class LOLServiceManager(baseUrl: String, apiUrl: String) {
 
     private val okHttpClient = HttpLoggingInterceptor().run {
         level = HttpLoggingInterceptor.Level.BODY
@@ -13,7 +13,7 @@ class LOLServiceManager {
     }
 
     val service: LOLService = Retrofit.Builder()
-        .baseUrl("https://ddragon.leagueoflegends.com/cdn/9.23.1/")
+        .baseUrl(baseUrl)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build().run {
@@ -21,7 +21,7 @@ class LOLServiceManager {
         }
 
     val apiService: LOLService = Retrofit.Builder()
-        .baseUrl("https://euw1.api.riotgames.com/lol/")
+        .baseUrl(apiUrl)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build().run {

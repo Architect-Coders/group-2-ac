@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.data.LocalDataSourceItems
 import com.example.data.RemoteDataSourceItems
+import com.teamtwo.apilol.model.LOLServiceManager
 import com.teamtwo.apilol.model.database.ApiLolDatabase
 import com.teamtwo.apilol.model.items.RetrofitDataSource
 import com.teamtwo.apilol.model.items.RoomDataSource
@@ -27,5 +28,13 @@ class ItemsAppModule {
     fun localDataSourceProvider(db: ApiLolDatabase): LocalDataSourceItems = RoomDataSource(db)
 
     @Provides
-    fun remoteDataSourceProvider(): RemoteDataSourceItems = RetrofitDataSource()
+    fun remoteDataSourceProvider(lolServiceManager: LOLServiceManager): RemoteDataSourceItems
+            = RetrofitDataSource(lolServiceManager)
+
+    val baseUrl = "https://ddragon.leagueoflegends.com/cdn/9.23.1/"
+    val apiUrl = "https://euw1.api.riotgames.com/lol/"
+
+    @Provides
+    @Singleton
+    fun lolServiceManagerProvider(): LOLServiceManager = LOLServiceManager(baseUrl, apiUrl)
 }

@@ -1,7 +1,6 @@
 package com.teamtwo.apilol.model.database
 
 import androidx.room.*
-import com.example.domain.Spell
 import com.teamtwo.apilol.model.database.entities.ChampionEntity
 import com.teamtwo.apilol.model.database.entities.ItemEntity
 import com.teamtwo.apilol.model.database.entities.SpellsEntity
@@ -38,7 +37,7 @@ interface ApilolDAO {
     @Query("SELECT COUNT(id) FROM ChampionEntity")
     fun numberOfChampions(): Int
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertChampions(championList: List<ChampionEntity>)
 
     @Query("SELECT * FROM ChampionEntity WHERE id = :id")

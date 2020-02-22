@@ -4,11 +4,13 @@ import android.app.Application
 import androidx.room.Room
 import com.example.data.ChampionsLocalDataSource
 import com.example.data.ChampionsRemoteDataSource
+import com.teamtwo.apilol.model.LOLServiceManager
 import com.teamtwo.apilol.model.champions.ChampionsRetrofitDataSource
 import com.teamtwo.apilol.model.champions.ChampionsRoomDataSource
 import com.teamtwo.apilol.model.database.ApiLolDatabase
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -27,5 +29,13 @@ class ChampionsAppModule {
     fun localDataSourceProvider(db: ApiLolDatabase): ChampionsLocalDataSource = ChampionsRoomDataSource(db)
 
     @Provides
-    fun remoteDataSourceProvider(): ChampionsRemoteDataSource = ChampionsRetrofitDataSource()
+    fun remoteDataSourceProvider(lolServiceManager: LOLServiceManager): ChampionsRemoteDataSource
+            = ChampionsRetrofitDataSource(lolServiceManager)
+
+    val baseUrl = "https://ddragon.leagueoflegends.com/cdn/9.23.1/"
+    val apiUrl = "https://euw1.api.riotgames.com/lol/"
+
+    @Provides
+    @Singleton
+    fun lolServiceManagerProvider(): LOLServiceManager = LOLServiceManager(baseUrl, apiUrl)
 }

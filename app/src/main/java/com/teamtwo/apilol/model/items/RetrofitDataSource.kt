@@ -4,10 +4,12 @@ import com.example.data.RemoteDataSourceItems
 import com.example.domain.Item as ItemDomain
 import com.teamtwo.apilol.model.LOLServiceManager
 
-class RetrofitDataSource: RemoteDataSourceItems {
+class RetrofitDataSource(
+    private val lolServiceManager: LOLServiceManager
+): RemoteDataSourceItems {
 
     override suspend fun getItems(): List<ItemDomain> {
-        val itemsResponse = LOLServiceManager().service.getAllItems("es_ES")
+        val itemsResponse = lolServiceManager.service.getAllItems("es_ES")
         return itemsResponse.body()?.data?.values?.toList() ?: emptyList()
     }
 }
