@@ -1,11 +1,12 @@
 package com.teamtwo.apilol.ui.spells
 
 import androidx.lifecycle.*
-import com.teamtwo.apilol.model.SpellsRepository
-import com.teamtwo.apilol.model.spells.Spell
+import com.example.data.SpellsRepository
+import com.example.domain.Spell
+import com.example.usecases.GetSpells
 import kotlinx.coroutines.launch
 
-class SpellsListViewModel(private val spellsRepository : SpellsRepository) : ViewModel() {
+class SpellsListViewModel(private val getSpells: GetSpells ) : ViewModel() {
 
     sealed class  ViewState{
         object Loading : ViewState()
@@ -16,28 +17,24 @@ class SpellsListViewModel(private val spellsRepository : SpellsRepository) : Vie
     private  val _state = MutableLiveData<ViewState>()
 
 
-    val state : LiveData<ViewState> get(){
-        if( _state.value == null) refresh()
-        return _state
-    }
+    val state: LiveData<ViewState> = _state
+
 
     fun onSpellClicked(spell: Spell){
         _state.value = ViewState.Navegation(spell)
     }
 
-    private fun refresh() {
-        viewModelScope.launch {
-            _state.value = ViewState.Loading
-            val spellsResponse = spellsRepository.getSpells()
-            val spellsList = spellsResponse.body()?.data?.values?.toList()
-            _state.value = ViewState.ShowList(spellsList?: emptyList())
-        }
+     fun refresh() {
+         viewModelScope.launch {
+             _state.value =
+                 ViewState.Loading
+             _state.value =
+                 ViewState.ShowList(
+                     getSpells.invoke()
+                 )
+         }
     }
 
 
 
-    class SpellsListViewModelFactory(private val repository: SpellsRepository) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T
-                = SpellsListViewModel(repository) as T
-    }
 }
