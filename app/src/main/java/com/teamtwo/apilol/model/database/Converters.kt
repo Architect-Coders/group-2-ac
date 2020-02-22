@@ -58,4 +58,16 @@ class Converters {
     @TypeConverter
     fun toQueue (queue: String): Queue = Gson().fromJson(queue, Queue::class.java)
 
+
+    @TypeConverter
+    fun toImg(image: String): Img = Gson().fromJson(image, Img::class.java)
+
+    @TypeConverter
+    fun fromImg(image: Img): String = Gson().toJson(image)
+
+    @TypeConverter
+    fun toGold(gold: String): Gold = Gson().fromJson(gold, Gold::class.java)
+
+    @TypeConverter
+    fun fromGold(gold: Gold): String = Gson().toJson(gold)
 }
