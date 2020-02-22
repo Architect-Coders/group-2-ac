@@ -1,11 +1,6 @@
 package com.example.usecases
 
-import com.example.domain.Champion
-import com.example.domain.Image
-import com.example.domain.Info
-import com.example.domain.Stats
-import com.example.domain.FeaturedGameInfo
-import com.example.domain.Observer
+import com.example.domain.*
 
 val localChampion = Champion(
     "id",
@@ -52,4 +47,14 @@ val localMatch = FeaturedGameInfo(
     emptyList(),
     0L,
     null
+)
+
+
+val localSummoner = Summoner(
+    0,
+    "",
+    0,
+    "",
+    "",
+    0L
 )
