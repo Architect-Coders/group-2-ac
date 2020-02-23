@@ -12,7 +12,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
       
         <activity android:name=".ui.MainActivity">
             <intent-filter>
@@ -26,10 +27,10 @@
         <activity android:name="com.teamtwo.apilol.ui.spells.SpellDetailActivity"/>
         <activity android:name="com.teamtwo.apilol.ui.matches.MatchListActivity"/>
         <activity android:name="com.teamtwo.apilol.ui.matches.MatchDetailActivity"/>
-        <activity android:name="com.teamtwo.apilol.ui.items.ItemDetailActivity" />
-        <activity android:name="com.teamtwo.apilol.ui.items.ItemListActivity" />
-        <activity android:name="com.teamtwo.apilol.ui.champions.ChampionListActivity" />
-        <activity android:name="com.teamtwo.apilol.ui.champions.ChampionDetailActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.items.detail.ItemDetailActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.items.list.ItemListActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.champions.list.ChampionListActivity" />
+        <activity android:name="com.teamtwo.apilol.ui.champions.detail.ChampionDetailActivity" />
         <activity android:name="com.teamtwo.apilol.ui.summoners.SummonersDetailActivity" />
     </application>
 

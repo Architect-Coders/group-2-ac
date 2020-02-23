@@ -3,27 +3,27 @@ package com.example.data
 import com.example.domain.Champion
 
 class ChampionsRepository(
-    private val localDataSource: LocalDataSource,
-    private val remoteDataSource: RemoteDataSource
+    private val championsLocalDataSource: ChampionsLocalDataSource,
+    private val championsRemoteDataSource: ChampionsRemoteDataSource
 ){
     suspend fun getChampions(): List<Champion> {
-        if (localDataSource.areChampionsEmpty()){
-            val champions = remoteDataSource.getChampions()
-            localDataSource.saveChampions(champions)
+        if (championsLocalDataSource.areChampionsEmpty()){
+            val champions = championsRemoteDataSource.getChampions()
+            championsLocalDataSource.saveChampions(champions)
         }
 
-        return localDataSource.getChampions()
+        return championsLocalDataSource.getChampions()
     }
 
     suspend fun updateChampion(champion: Champion){
-        localDataSource.updateChampion(champion)
+        championsLocalDataSource.updateChampion(champion)
     }
 
     suspend fun findChampionById(championId: String): Champion
-            = localDataSource.findChampionById(championId)
+            = championsLocalDataSource.findChampionById(championId)
 }
 
-interface LocalDataSource {
+interface ChampionsLocalDataSource {
     suspend fun areChampionsEmpty(): Boolean
     suspend fun saveChampions(champions: List<Champion>)
     suspend fun getChampions(): List<Champion>
@@ -31,6 +31,6 @@ interface LocalDataSource {
     suspend fun findChampionById(championId: String): Champion
 }
 
-interface RemoteDataSource {
+interface ChampionsRemoteDataSource {
     suspend fun getChampions(): List<Champion>
 }
