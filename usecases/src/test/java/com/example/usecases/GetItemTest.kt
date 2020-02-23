@@ -22,9 +22,9 @@ class GetItemTest {
     @Test
     fun `getItem return the correct requested item`(){
         runBlocking {
-            whenever(itemsRepository.findItemById(localItem.id)).doReturn(localItem)
+            whenever(itemsRepository.findItemById(localItem.id.toString())).doReturn(localItem)
 
-            val item = getItem.invoke(localItem.id)
+            val item = getItem.invoke(localItem.id.toString())
 
             assertEquals(localItem, item)
         }

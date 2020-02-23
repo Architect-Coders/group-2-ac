@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.domain.Summoner
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.ui.summoners.SummonnerViewModel.UiModelSummoner
 import com.teamtwo.apilol.model.SummonerRepository
-import com.teamtwo.apilol.model.sumonners.Summoner
 import com.teamtwo.apilol.toast
 import kotlinx.android.synthetic.main.activity_summoner_detail.*
 import kotlinx.android.synthetic.main.loading.*

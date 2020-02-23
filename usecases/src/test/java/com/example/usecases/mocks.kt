@@ -53,3 +53,27 @@ val localItem = Item(
         0
     )
 )
+
+val localMatch = FeaturedGameInfo(
+    0L,
+    0L,
+    "",
+    "",
+    0L,
+    "",
+    emptyList(),
+    Observer(""),
+    emptyList(),
+    0L,
+    null
+)
+
+
+val localSummoner = Summoner(
+    0,
+    "",
+    0,
+    "",
+    "",
+    0L
+)

@@ -18,8 +18,8 @@ fun ChampionEntity.toChampionDomain(): Champion = Champion(
 )
 
 fun Champion.toChampionEntity(): ChampionEntity = ChampionEntity(
-    version,
     id,
+    version,
     key,
     name,
     title,

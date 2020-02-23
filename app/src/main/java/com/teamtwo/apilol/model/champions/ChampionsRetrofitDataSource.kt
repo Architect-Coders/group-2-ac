@@ -1,13 +1,15 @@
 package com.teamtwo.apilol.model.champions
 
 import com.example.data.ChampionsRemoteDataSource
-import com.example.domain.Champion as ChampionDomain
+import com.example.domain.Champion
 import com.teamtwo.apilol.model.LOLServiceManager
 
-class ChampionsRetrofitDataSource: ChampionsRemoteDataSource {
+class ChampionsRetrofitDataSource(
+    private val lolServiceManager: LOLServiceManager
+): ChampionsRemoteDataSource {
 
-    override suspend fun getChampions(): List<ChampionDomain> {
-        val championsResponse = LOLServiceManager().service.getChampions()
+    override suspend fun getChampions(): List<Champion> {
+        val championsResponse = lolServiceManager.service.getChampions()
         return championsResponse.body()?.data?.values?.toList() ?: emptyList()
     }
 }

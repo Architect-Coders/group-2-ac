@@ -2,6 +2,20 @@ package com.example.data
 
 import com.example.domain.*
 
+val localMatch = FeaturedGameInfo(
+    0L,
+    0L,
+    "",
+    "",
+    0L,
+    "",
+    emptyList(),
+    Observer(""),
+    emptyList(),
+    0L,
+    null
+)
+
 val localChampion = Champion(
     "id",
     "",
