@@ -1,13 +1,23 @@
 package com.teamtwo.apilol.di
 
+import android.app.Application
+import androidx.room.Room
 import com.teamtwo.apilol.model.LOLServiceManager
+import com.teamtwo.apilol.model.database.ApiLolDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-open class ServerModule {
+open class DataSourcesModule {
+
+    @Provides @Singleton
+    fun databaseProvider(app: Application) = Room.databaseBuilder(
+        app,
+        ApiLolDatabase::class.java,
+        "api_lol_db"
+    ).build()
 
     @Provides
     @Singleton
