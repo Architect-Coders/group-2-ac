@@ -10,7 +10,6 @@ import com.teamtwo.apilol.model.champions.ChampionsRoomDataSource
 import com.teamtwo.apilol.model.database.ApiLolDatabase
 import dagger.Module
 import dagger.Provides
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -31,11 +30,4 @@ class ChampionsAppModule {
     @Provides
     fun remoteDataSourceProvider(lolServiceManager: LOLServiceManager): ChampionsRemoteDataSource
             = ChampionsRetrofitDataSource(lolServiceManager)
-
-    private val baseUrl = "https://ddragon.leagueoflegends.com/cdn/9.23.1/"
-    private val apiUrl = "https://euw1.api.riotgames.com/lol/"
-
-    @Provides
-    @Singleton
-    fun lolServiceManagerProvider(): LOLServiceManager = LOLServiceManager(baseUrl, apiUrl)
 }

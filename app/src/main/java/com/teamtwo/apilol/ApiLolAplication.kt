@@ -10,7 +10,7 @@ import com.teamtwo.apilol.di.matches.MatchesComponent
 import com.teamtwo.apilol.di.items.DaggerItemsComponent
 import com.teamtwo.apilol.di.items.ItemsComponent
 
-class ApiLolAplication : Application() {
+open class ApiLolAplication : Application() {
 
     lateinit var championsComponent: ChampionsComponent
         private set
@@ -28,8 +28,10 @@ class ApiLolAplication : Application() {
         super.onCreate()
 
         spellsComponent = DaggerSpellsComponent.factory().create(this)
-        championsComponent = DaggerChampionsComponent.factory().create(this)
+        championsComponent = initChampionsComponent()
         matchesComponent = DaggerMatchesComponent.factory().create(this)
         itemsComponent = DaggerItemsComponent.factory().create(this)
     }
+
+    open fun initChampionsComponent() = DaggerChampionsComponent.factory().create(this)
 }

@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class LOLServiceManager(baseUrl: String, apiUrl: String) {
 
-    private val okHttpClient = HttpLoggingInterceptor().run {
+    internal val okHttpClient = HttpLoggingInterceptor().run {
         level = HttpLoggingInterceptor.Level.BODY
         OkHttpClient.Builder().addInterceptor(this).build()
     }
