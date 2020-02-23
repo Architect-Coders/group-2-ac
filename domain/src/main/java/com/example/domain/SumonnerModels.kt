@@ -1,9 +1,5 @@
-package com.teamtwo.apilol.model.sumonners
+package com.example.domain
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-
-@Parcelize
 data class Summoner (
     val profileIconId: Int,
     val name: String,
@@ -11,4 +7,4 @@ data class Summoner (
     val accountId: String,
     val id: String,
     val revisionDate: Long
-): Parcelable
+)

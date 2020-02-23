@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.inflate
 import com.teamtwo.apilol.loadUrl
-import com.teamtwo.apilol.model.spells.Spell
+import com.example.domain.Spell
 import kotlinx.android.synthetic.main.spell_list_item.view.*
 
 class SpellsAdapter(private val listener: (Spell) -> Unit ) :RecyclerView.Adapter<SpellsAdapter.ViewHolder>(){

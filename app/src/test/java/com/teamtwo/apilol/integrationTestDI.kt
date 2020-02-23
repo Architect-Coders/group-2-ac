@@ -7,6 +7,7 @@ import com.teamtwo.apilol.di.champions.ChampionsAppModule
 import com.teamtwo.apilol.di.champions.ChampionsComponent
 import com.teamtwo.apilol.di.champions.ChampionsDataModule
 import com.teamtwo.apilol.di.champions.ChampionsUseCaseModule
+import com.teamtwo.apilol.model.LOLServiceManager
 import com.teamtwo.apilol.ui.champions.detail.ChampionDetailViewModel
 import com.teamtwo.apilol.ui.champions.list.ChampionListViewModel
 import com.teamtwo.apilol.ui.champions.localChampion

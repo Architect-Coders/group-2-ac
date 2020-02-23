@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.data.ChampionsLocalDataSource
 import com.example.data.ChampionsRemoteDataSource
+import com.teamtwo.apilol.model.LOLServiceManager
 import com.teamtwo.apilol.model.champions.ChampionsRetrofitDataSource
 import com.teamtwo.apilol.model.champions.ChampionsRoomDataSource
 import com.teamtwo.apilol.model.database.ApiLolDatabase
@@ -27,5 +28,6 @@ class ChampionsAppModule {
     fun localDataSourceProvider(db: ApiLolDatabase): ChampionsLocalDataSource = ChampionsRoomDataSource(db)
 
     @Provides
-    fun remoteDataSourceProvider(): ChampionsRemoteDataSource = ChampionsRetrofitDataSource()
+    fun remoteDataSourceProvider(lolServiceManager: LOLServiceManager): ChampionsRemoteDataSource
+            = ChampionsRetrofitDataSource(lolServiceManager)
 }
