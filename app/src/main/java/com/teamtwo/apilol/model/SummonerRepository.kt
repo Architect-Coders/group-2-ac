@@ -8,5 +8,6 @@ class SummonerRepository {
         const val apiKey = BuildConfig.API_KEY
     }
 
-    suspend fun getSummoner(summonderName: String) = LOLServiceManager().apiService.getSummoner(summonderName, apiKey)
+    //TODO
+    suspend fun getSummoner(summonderName: String) = LOLServiceManager("","").apiService.getSummoner(summonderName, apiKey)
 }

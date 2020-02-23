@@ -1,21 +1,37 @@
 package com.teamtwo.apilol
 
 import android.app.Application
-import androidx.room.Room
-import com.teamtwo.apilol.model.database.ApiLolDatabase
+import com.teamtwo.apilol.di.spells.DaggerSpellsComponent
+import com.teamtwo.apilol.di.spells.SpellsComponent
+import com.teamtwo.apilol.di.champions.ChampionsComponent
+import com.teamtwo.apilol.di.champions.DaggerChampionsComponent
+import com.teamtwo.apilol.di.matches.DaggerMatchesComponent
+import com.teamtwo.apilol.di.matches.MatchesComponent
+import com.teamtwo.apilol.di.items.DaggerItemsComponent
+import com.teamtwo.apilol.di.items.ItemsComponent
 
-class ApiLolAplication : Application() {
+open class ApiLolAplication : Application() {
 
-    lateinit var db: ApiLolDatabase
+    lateinit var championsComponent: ChampionsComponent
+        private set
+
+    lateinit var itemsComponent: ItemsComponent
+        private set
+
+    lateinit var spellsComponent: SpellsComponent
+        private set
+
+    lateinit var matchesComponent: MatchesComponent
         private set
 
     override fun onCreate() {
         super.onCreate()
 
-        db = Room.databaseBuilder(
-            this,
-            ApiLolDatabase::class.java,
-            "api_lol_db"
-        ).build()
+        spellsComponent = DaggerSpellsComponent.factory().create(this)
+        championsComponent = initChampionsComponent()
+        matchesComponent = DaggerMatchesComponent.factory().create(this)
+        itemsComponent = DaggerItemsComponent.factory().create(this)
     }
+
+    open fun initChampionsComponent() = DaggerChampionsComponent.factory().create(this)
 }
