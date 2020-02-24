@@ -27,6 +27,7 @@ class SpellsLsitActivity : BaseActivity(R.layout.activity_spells_list) {
 
     private fun initObserver() {
         viewModel.state.observe(this, Observer  (::updateList) )
+        viewModel.refresh()
     }
 
 
