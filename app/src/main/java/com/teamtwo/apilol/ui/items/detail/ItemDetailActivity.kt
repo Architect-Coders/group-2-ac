@@ -42,7 +42,9 @@ class ItemDetailActivity : BaseActivity(R.layout.activity_item_detail) {
 
         supportActionBar?.title = item.name
         tvName.text = item.name
-        tvDescription.text = item.description
+
+        var description = item.description.replace("<stats>","")
+        tvDescription.text = description.replace("</stats>","")
 
         with(item.image){
 
