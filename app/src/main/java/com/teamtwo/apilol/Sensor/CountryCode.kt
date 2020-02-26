@@ -1,14 +1,15 @@
-package com.teamtwo.apilol.sensor
+package com.teamtwo.apilol.Sensor
 
 import android.app.Application
 import android.location.Geocoder
 import android.location.Location
 import com.teamtwo.apilol.Sensor.CountryLanguage
+import com.teamtwo.apilol.Sensor.GpsLocation
 
 class CountryCode(private val application: Application) {
 
     companion object {
-        private const val COUNTRY_CODE = "en_US"
+        private const val COUNTRY_CODE = "en_ES"
     }
 
     fun getCode(): String {

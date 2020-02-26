@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.sensor
+package com.teamtwo.apilol.Sensor
 
 import android.annotation.SuppressLint
 import android.app.Application

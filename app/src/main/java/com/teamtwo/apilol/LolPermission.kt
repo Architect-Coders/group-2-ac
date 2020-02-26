@@ -12,7 +12,7 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
-import com.teamtwo.apilol.sensor.GpsLocation
+import com.teamtwo.apilol.Sensor.GpsLocation
 
 class LolPermission(private val context: Application) {
 
