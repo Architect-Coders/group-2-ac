@@ -1,15 +1,16 @@
 package com.teamtwo.apilol.ui.summoners
 
 import androidx.lifecycle.*
+import com.example.data.SummonersRepository
 import com.example.domain.Summoner
-import com.teamtwo.apilol.model.SummonerRepository
+import com.example.usecases.GetSummoner
 import kotlinx.coroutines.launch
 
-class SummonnerViewModel(private val summonerRepository: SummonerRepository) : ViewModel() {
+class SummonerViewModel(private val summonerRepository: GetSummoner) : ViewModel() {
 
     sealed class UiModelSummoner {
-        object Loading : UiModelSummoner()
-        object Error : UiModelSummoner()
+        data class Loading(val name: String = "") : UiModelSummoner()
+        data class Error(val name: String = "") : UiModelSummoner()
         class Content(val summoner: Summoner): UiModelSummoner()
     }
 
@@ -20,19 +21,19 @@ class SummonnerViewModel(private val summonerRepository: SummonerRepository) : V
 
     fun reload(name: String) {
         viewModelScope.launch {
-            _model.value = UiModelSummoner.Loading
-            val summonerResponse = summonerRepository.getSummoner(name).body()
+            _model.value = UiModelSummoner.Loading()
+            val summonerResponse = summonerRepository.invoke(name)
             summonerResponse?.let {
                 _model.value = UiModelSummoner.Content(it)
             } ?: run {
-                _model.value = UiModelSummoner.Error
+                _model.value = UiModelSummoner.Error()
             }
         }
     }
 
 }
 
-class SumonnerViewModelFactory(private val repository: SummonerRepository) : ViewModelProvider.Factory {
+class SumonnerViewModelFactory(private val repository: GetSummoner) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T
-            = SummonnerViewModel(repository) as T
+            = SummonerViewModel(repository) as T
 }

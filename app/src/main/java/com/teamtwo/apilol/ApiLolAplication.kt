@@ -9,6 +9,8 @@ import com.teamtwo.apilol.di.matches.DaggerMatchesComponent
 import com.teamtwo.apilol.di.matches.MatchesComponent
 import com.teamtwo.apilol.di.items.DaggerItemsComponent
 import com.teamtwo.apilol.di.items.ItemsComponent
+import com.teamtwo.apilol.di.summoners.DaggerSummonersComponent
+import com.teamtwo.apilol.di.summoners.SummonersComponent
 
 open class ApiLolAplication : Application() {
 
@@ -24,6 +26,9 @@ open class ApiLolAplication : Application() {
     lateinit var matchesComponent: MatchesComponent
         private set
 
+    lateinit var summonerComponent: SummonersComponent
+        private set
+
     override fun onCreate() {
         super.onCreate()
 
@@ -31,6 +36,7 @@ open class ApiLolAplication : Application() {
         championsComponent = initChampionsComponent()
         matchesComponent = DaggerMatchesComponent.factory().create(this)
         itemsComponent = DaggerItemsComponent.factory().create(this)
+        summonerComponent = DaggerSummonersComponent.factory().create(this)
     }
 
     open fun initChampionsComponent() = DaggerChampionsComponent.factory().create(this)

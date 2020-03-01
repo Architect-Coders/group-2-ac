@@ -3,6 +3,8 @@ package com.teamtwo.apilol.di.summoners
 import android.app.Application
 import com.teamtwo.apilol.ui.matches.MatchesListActivityComponent
 import com.teamtwo.apilol.ui.matches.MatchesListActivityModule
+import com.teamtwo.apilol.ui.summoners.SummonerActivtyComponent
+import com.teamtwo.apilol.ui.summoners.SummonerActivtyModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -15,7 +17,7 @@ import javax.inject.Singleton
 ))
 interface SummonersComponent {
 
-    //fun plus(matchesListActivityModule: MatchesListActivityModule): MatchesListActivityComponent
+    fun plus(summonerActivtyModule: SummonerActivtyModule): SummonerActivtyComponent
 
     @Component.Factory
     interface Factory {
