@@ -50,7 +50,6 @@ interface MatchesUiTestComponent : MatchesComponent {
 
     val lolServiceManager: LOLServiceManager
     val mockWebServer: MockWebServer
-    val database: ApiLolDatabase
 
     @Component.Factory
     interface Factory {
