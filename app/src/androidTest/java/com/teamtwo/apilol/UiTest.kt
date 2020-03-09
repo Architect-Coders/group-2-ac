@@ -74,6 +74,29 @@ class UiTest {
         onView(withId(R.id.rvChampions)).check(matches(isDisplayed()))
 
     }
+    @ExperimentalTime
+    @Test
+    fun clickItemsNavigateToItemList_showsLoading(){
+        onView(withId(R.id.btnDavid)).perform(ViewActions.click())
+        onView(withId(R.id.loading)).check(matches(isDisplayed()))
+    }
+
+    @ExperimentalTime
+    @Test
+    fun clickItemsNavigateToItemList(){
+        mockWebServer.enqueue(
+            MockResponse()
+                .setResponseCode(200)
+                .setBody(itemListMock)
+        )
+
+        onView(withId(R.id.btnDavid)).perform(ViewActions.click())
+
+        SystemClock.sleep(1000)
+
+        onView(withId(R.id.rvItems)).check(matches(isDisplayed()))
+
+    }
 
     @After
     fun tearDown(){
