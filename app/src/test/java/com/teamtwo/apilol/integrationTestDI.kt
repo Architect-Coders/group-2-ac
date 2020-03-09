@@ -2,15 +2,22 @@ package com.teamtwo.apilol
 
 import com.example.data.ChampionsLocalDataSource
 import com.example.data.ChampionsRemoteDataSource
+import com.example.data.LocalDataSourceItems
+import com.example.data.RemoteDataSourceItems
 import com.example.domain.Champion
+import com.example.domain.Item
 import com.teamtwo.apilol.di.champions.ChampionsAppModule
 import com.teamtwo.apilol.di.champions.ChampionsComponent
 import com.teamtwo.apilol.di.champions.ChampionsDataModule
 import com.teamtwo.apilol.di.champions.ChampionsUseCaseModule
+import com.teamtwo.apilol.di.items.ItemsComponent
+import com.teamtwo.apilol.di.items.ItemsDataModule
+import com.teamtwo.apilol.di.items.ItemsUseCaseModule
 import com.teamtwo.apilol.model.LOLServiceManager
 import com.teamtwo.apilol.ui.champions.detail.ChampionDetailViewModel
 import com.teamtwo.apilol.ui.champions.list.ChampionListViewModel
 import com.teamtwo.apilol.ui.champions.localChampion
+import com.teamtwo.apilol.ui.items.localItem
 import dagger.Component
 import dagger.Module
 import dagger.Provides
@@ -20,7 +27,9 @@ import javax.inject.Singleton
 @Component(modules = [
     TestAppModule::class,
     ChampionsDataModule::class,
-    ChampionsUseCaseModule::class
+    ChampionsUseCaseModule::class,
+    ItemsDataModule::class,
+    ItemsUseCaseModule::class
 ])
 interface TestComponent : ChampionsComponent {
 
@@ -30,6 +39,17 @@ interface TestComponent : ChampionsComponent {
     @Component.Factory
     interface FactoryTest {
         fun create(): TestComponent
+    }
+}
+
+interface ItemTestComponent : ItemsComponent {
+
+    val localDataSource: LocalDataSourceItems
+    val remoteDataSource: RemoteDataSourceItems
+
+    @Component.Factory
+    interface FactoryTest {
+        fun create(): ItemTestComponent
     }
 }
 
@@ -45,6 +65,16 @@ class TestAppModule {
     @Singleton
     fun championsRemoteDataSourceProvider():
             ChampionsRemoteDataSource = FakeChampionsRemoteDataSource()
+
+    @Provides
+    @Singleton
+    fun itemsLocalDataSourceProvider():
+            LocalDataSourceItems = FakeItemsLocalDataSource()
+
+    @Provides
+    @Singleton
+    fun itemsRemoteDataSourceProvider():
+            RemoteDataSourceItems = FakeItemsRemoteDataSource()
 }
 
 val defaultFakeChampions = listOf(
@@ -53,6 +83,14 @@ val defaultFakeChampions = listOf(
     localChampion.copy(id = "id3"),
     localChampion.copy(id = "id4"),
     localChampion.copy(id = "id5")
+)
+
+val defaultFakeItems = listOf(
+    localItem.copy(id = 1),
+    localItem.copy(id = 2),
+    localItem.copy(id = 3),
+    localItem.copy(id = 4),
+    localItem.copy(id = 5)
 )
 
 class FakeChampionsLocalDataSource : ChampionsLocalDataSource {
@@ -75,10 +113,38 @@ class FakeChampionsLocalDataSource : ChampionsLocalDataSource {
             = champions.first { it.id == championId }
 }
 
+class FakeItemsLocalDataSource : LocalDataSourceItems {
+
+    var items = emptyList<Item>()
+
+    override suspend fun itemsExists(): Boolean = items.isEmpty()
+
+    override suspend fun saveItems(items: List<Item>) {
+        this.items = items
+    }
+
+    override suspend fun getItems(): List<Item> = items
+
+    override suspend fun updateItem(item: Item) {
+        items = items.filterNot { it.id == item.id } + item
+    }
+
+    override suspend fun findItemById(itemId: String): Item
+            = items.first { it.id.toString() == itemId }
+}
+
 class FakeChampionsRemoteDataSource : ChampionsRemoteDataSource {
 
     var champions = defaultFakeChampions
 
     override suspend fun getChampions(): List<Champion> = champions
+
+}
+
+class FakeItemsRemoteDataSource : RemoteDataSourceItems {
+
+    var items = defaultFakeItems
+
+    override suspend fun getItems(): List<Item> = items
 
 }
