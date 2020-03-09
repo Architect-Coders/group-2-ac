@@ -3,6 +3,7 @@ package com.example.data
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert
@@ -27,8 +28,8 @@ class SpellsRepositoryTest {
 
         val mockSpells = listOf(localSpells)
 
-        Mockito.`when`(localDataSource.isSpellsEmpty()).doReturn(true)
-        Mockito.`when`(localDataSource.getSpells()).doReturn(mockSpells)
+        whenever(localDataSource.isSpellsEmpty()).doReturn(true)
+        whenever(localDataSource.getSpells()).doReturn(mockSpells)
 
         val spell = repository.getSpells()
 
@@ -40,7 +41,7 @@ class SpellsRepositoryTest {
     @Test
     fun `getSpells save remote data in local data`(){
         runBlocking {
-            Mockito.`when`(localDataSource.isSpellsEmpty()).doReturn(true)
+            whenever(localDataSource.isSpellsEmpty()).doReturn(true)
 
             val champions = repository.getSpells()
 
@@ -51,7 +52,7 @@ class SpellsRepositoryTest {
     @Test
     fun `getSpell not call remoteDataSource if localDataSource is not empty`(){
         runBlocking {
-            Mockito.`when`(localDataSource.isSpellsEmpty()).doReturn(false)
+            whenever(localDataSource.isSpellsEmpty()).doReturn(false)
 
             repository.getSpells()
 

@@ -1,11 +1,17 @@
 package com.teamtwo.apilol
 
 import android.app.Application
+import androidx.room.Room
 import com.teamtwo.apilol.di.champions.ChampionsAppModule
 import com.teamtwo.apilol.di.champions.ChampionsComponent
 import com.teamtwo.apilol.di.champions.ChampionsDataModule
 import com.teamtwo.apilol.di.champions.ChampionsUseCaseModule
+import com.teamtwo.apilol.di.spells.SpellsAppModule
+import com.teamtwo.apilol.di.spells.SpellsComponent
+import com.teamtwo.apilol.di.spells.SpellsDataModule
+import com.teamtwo.apilol.di.spells.SpellsUseCaseModule
 import com.teamtwo.apilol.model.LOLServiceManager
+import com.teamtwo.apilol.model.database.ApiLolDatabase
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -33,8 +39,37 @@ interface UiTestComponent : ChampionsComponent {
 
 }
 
+
+@Singleton
+@Component(modules = [
+    SpellsAppModule::class,
+    SpellsDataModule::class,
+    SpellsUseCaseModule::class,
+    UiTestServerModule::class
+])
+interface SpellsUiTestComponent : SpellsComponent {
+
+    val lolServiceManager: LOLServiceManager
+    val mockWebServer: MockWebServer
+
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance app: Application): SpellsUiTestComponent
+    }
+
+}
+
 @Module
 class UiTestServerModule {
+
+    @Provides @Singleton
+    fun databaseProvider(app: Application): ApiLolDatabase = Room.inMemoryDatabaseBuilder(
+        app,
+        ApiLolDatabase::class.java
+    )
+        .allowMainThreadQueries()
+        .build()
+
 
     @Provides
     @Singleton

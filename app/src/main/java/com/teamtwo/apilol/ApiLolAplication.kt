@@ -34,4 +34,6 @@ open class ApiLolAplication : Application() {
     }
 
     open fun initChampionsComponent() = DaggerChampionsComponent.factory().create(this)
+
+    open fun initSpellsComponent() = DaggerSpellsComponent.factory().create(this)
 }
