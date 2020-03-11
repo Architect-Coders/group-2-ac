@@ -40,11 +40,12 @@ interface UiTestComponent : ChampionsComponent {
 class UiTestServerModule {
 
     @Provides @Singleton
-    fun databaseProvider(app: Application): ApiLolDatabase = Room.databaseBuilder(
+    fun databaseProvider(app: Application): ApiLolDatabase = Room.inMemoryDatabaseBuilder(
         app,
-        ApiLolDatabase::class.java,
-        "api_lol_db"
-    ).build()
+        ApiLolDatabase::class.java
+    )
+        .allowMainThreadQueries()
+        .build()
 
     @Provides
     @Singleton
