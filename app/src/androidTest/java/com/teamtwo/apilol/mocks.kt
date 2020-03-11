@@ -217,7 +217,7 @@ val itemListMock = """
         "1": {
           "name": "Botas",
           "description": "Botas basicas",
-          "plaintext": "Botas para aumentar velocidad"
+          "plaintext": "Botas para aumentar velocidad",
           "image": {
             "full": "1001.png",
             "sprite": "item0.png",
@@ -230,12 +230,12 @@ val itemListMock = """
           "gold": {
             "total":100,
             "sell":50
-          ]
+          }
         },
         "2": {
           "name": "Botas nuevas",
           "description": "Botas nuevas",
-          "plaintext": "Botas para aumentar mucho la velocidad"
+          "plaintext": "Botas para aumentar mucho la velocidad",
           "image": {
             "full": "1004.png",
             "sprite": "item4.png",
@@ -248,7 +248,7 @@ val itemListMock = """
           "gold": {
             "total":100,
             "sell":50
-          ]
+          }
         }
       }
     }
