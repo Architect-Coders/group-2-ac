@@ -29,9 +29,11 @@ open class ApiLolAplication : Application() {
 
         spellsComponent = DaggerSpellsComponent.factory().create(this)
         championsComponent = initChampionsComponent()
-        matchesComponent = DaggerMatchesComponent.factory().create(this)
+        matchesComponent = initMatchesComponent()
         itemsComponent = DaggerItemsComponent.factory().create(this)
     }
 
     open fun initChampionsComponent() = DaggerChampionsComponent.factory().create(this)
+
+    open fun initMatchesComponent() = DaggerMatchesComponent.factory().create(this)
 }
