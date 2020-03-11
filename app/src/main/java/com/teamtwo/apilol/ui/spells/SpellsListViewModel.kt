@@ -14,27 +14,18 @@ class SpellsListViewModel(private val getSpells: GetSpells ) : ViewModel() {
         class Navegation (val spell: Spell) : ViewState()
     }
 
-    private  val _state = MutableLiveData<ViewState>()
-
-
+    private val _state = MutableLiveData<ViewState>()
     val state: LiveData<ViewState> = _state
-
-
+    
     fun onSpellClicked(spell: Spell){
         _state.value = ViewState.Navegation(spell)
     }
 
      fun refresh() {
          viewModelScope.launch {
-             _state.value =
-                 ViewState.Loading
-             _state.value =
-                 ViewState.ShowList(
-                     getSpells.invoke()
-                 )
+             _state.value = ViewState.Loading
+             _state.value = ViewState.ShowList(getSpells.invoke())
          }
     }
-
-
 
 }

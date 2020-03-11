@@ -43,7 +43,8 @@ class MatchViewModelTest {
             viewModel.requestRecentMatches()
             assertSendsValues(
                 5,
-                MatchViewModel.MatchListUiData.Loading()
+                MatchViewModel.MatchListUiData.Loading(),
+                MatchViewModel.MatchListUiData.Error("Ha ocurrido un error al recuperar las partidas.", listOf(localMatch))
             )
         }
     }

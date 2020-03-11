@@ -25,10 +25,8 @@ class SpellDetailActivity : BaseActivity(R.layout.activity_detail_spell) {
     }
     private fun initView (intent: Intent) {
 
-        if (intent.hasExtra(spell) && intent.getStringExtra(
-                spell
-            ) != null) {
-
+        if (intent.hasExtra(spell)
+            && intent.getStringExtra(spell) != null) {
             showDetailUi (Gson().fromJson(intent.getStringExtra(spell), Spell::class.java))
         } else {
             showError()

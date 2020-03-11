@@ -1,6 +1,7 @@
 package com.teamtwo.apilol.di.matches
 
 import android.app.Application
+import com.teamtwo.apilol.di.DataSourcesModule
 import com.teamtwo.apilol.ui.matches.MatchesListActivityComponent
 import com.teamtwo.apilol.ui.matches.MatchesListActivityModule
 import dagger.BindsInstance
@@ -8,11 +9,11 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules= arrayOf(
+@Component(modules= [
     MatchesAppModule::class,
     MatchesDataModule::class,
-    MatchesUseCaseModule::class
-))
+    MatchesUseCaseModule::class,
+    DataSourcesModule::class])
 interface MatchesComponent {
 
     fun plus(matchesListActivityModule: MatchesListActivityModule): MatchesListActivityComponent

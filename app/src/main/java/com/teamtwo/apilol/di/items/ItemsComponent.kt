@@ -1,6 +1,7 @@
 package com.teamtwo.apilol.di.items
 
 import android.app.Application
+import com.teamtwo.apilol.di.DataSourcesModule
 import com.teamtwo.apilol.ui.items.detail.ItemDetailActivityComponent
 import com.teamtwo.apilol.ui.items.detail.ItemDetailActivityModule
 import com.teamtwo.apilol.ui.items.list.ItemListActivityComponent
@@ -14,7 +15,8 @@ import javax.inject.Singleton
 @Component(modules = [
     ItemsAppModule::class,
     ItemsDataModule::class,
-    ItemsUseCaseModule::class
+    ItemsUseCaseModule::class,
+    DataSourcesModule::class
 ])
 interface ItemsComponent {
 

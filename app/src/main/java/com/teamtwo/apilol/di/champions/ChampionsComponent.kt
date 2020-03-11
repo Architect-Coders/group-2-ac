@@ -1,7 +1,7 @@
 package com.teamtwo.apilol.di.champions
 
 import android.app.Application
-import com.teamtwo.apilol.di.ServerModule
+import com.teamtwo.apilol.di.DataSourcesModule
 import com.teamtwo.apilol.ui.champions.detail.ChampionDetailActivityComponent
 import com.teamtwo.apilol.ui.champions.detail.ChampionDetailActivityModule
 import com.teamtwo.apilol.ui.champions.list.ChampionListActivityComponent
@@ -16,7 +16,7 @@ import javax.inject.Singleton
     ChampionsAppModule::class,
     ChampionsDataModule::class,
     ChampionsUseCaseModule::class,
-    ServerModule::class
+    DataSourcesModule::class
 ])
 interface ChampionsComponent {
 

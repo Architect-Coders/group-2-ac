@@ -1,18 +1,11 @@
 package com.teamtwo.apilol
 
 import android.app.Application
-import com.example.data.ChampionsLocalDataSource
-import com.example.data.ChampionsRemoteDataSource
-import com.teamtwo.apilol.di.ServerModule
 import com.teamtwo.apilol.di.champions.ChampionsAppModule
 import com.teamtwo.apilol.di.champions.ChampionsComponent
 import com.teamtwo.apilol.di.champions.ChampionsDataModule
 import com.teamtwo.apilol.di.champions.ChampionsUseCaseModule
 import com.teamtwo.apilol.model.LOLServiceManager
-import com.teamtwo.apilol.ui.champions.detail.ChampionDetailActivityComponent
-import com.teamtwo.apilol.ui.champions.detail.ChampionDetailActivityModule
-import com.teamtwo.apilol.ui.champions.list.ChampionListActivityComponent
-import com.teamtwo.apilol.ui.champions.list.ChampionListActivityModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
