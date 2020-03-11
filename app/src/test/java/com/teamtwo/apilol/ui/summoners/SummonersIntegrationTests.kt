@@ -2,12 +2,10 @@ package com.teamtwo.apilol.ui.summoners
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.data.*
-import com.example.usecases.GetMatches
 import com.example.usecases.GetSummoner
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.teamtwo.apilol.CoroutinesTestRule
-import com.teamtwo.apilol.ui.matches.MatchViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
 import org.junit.Test
@@ -23,8 +21,8 @@ class SummonersIntegrationTests {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     //Integración con dataSources
-    private val remoteSource: RemoteSummonerDataSource = mock()
-    private val repository = SummonersRepository(remoteSource)
+    private val sourceRemote: SummonerRemoteDataSource = mock()
+    private val repository = SummonersRepository(sourceRemote)
     private val useCase: GetSummoner = GetSummoner(repository)
     private val viewModelDataSource: SummonerViewModel = SummonerViewModel(useCase)
 

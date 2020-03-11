@@ -9,6 +9,6 @@ class SummonersDataModule {
 
     @Provides
     fun summonersRepositoryProvider(
-        remoteDataSource: RemoteSummonerDataSource
+        remoteDataSource: SummonerRemoteDataSource
     ) = SummonersRepository(remoteDataSource)
 }

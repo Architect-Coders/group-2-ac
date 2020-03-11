@@ -3,17 +3,11 @@ package com.teamtwo.apilol.ui.summoners
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import com.example.data.RemoteSummonerDataSource
-import com.example.data.SummonersRepository
 import com.example.domain.Summoner
-import com.example.usecases.GetSummoner
 import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
 import com.teamtwo.apilol.toast
-import com.teamtwo.apilol.ui.spells.SpellListActivtyComponent
-import com.teamtwo.apilol.ui.spells.SpellListActivtyModule
 import kotlinx.android.synthetic.main.activity_summoner_detail.*
 import kotlinx.android.synthetic.main.loading.*
 

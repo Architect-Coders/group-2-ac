@@ -9,7 +9,7 @@ import org.junit.Test
 
 class SummonersRepositoryTest {
 
-    private val summonerRemoteDataSource: RemoteSummonerDataSource = mock()
+    private val summonerRemoteDataSource: SummonerRemoteDataSource = mock()
     private lateinit var summonerRepository: SummonersRepository
 
     @Before

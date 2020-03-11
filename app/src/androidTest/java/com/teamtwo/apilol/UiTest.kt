@@ -75,6 +75,30 @@ class UiTest {
 
     }
 
+
+    @ExperimentalTime
+    @Test
+    fun clickSumonnersNavigateToSummonerActivity(){
+        onView(withId(R.id.btnDaniel)).perform(ViewActions.click())
+    }
+
+    @ExperimentalTime
+    @Test
+    fun clickSummonerNavigateToChampionList(){
+        mockWebServer.enqueue(
+            MockResponse()
+                .setResponseCode(200)
+                .setBody(summonerListMock)
+        )
+
+        onView(withId(R.id.btnDaniel)).perform(ViewActions.click())
+
+        SystemClock.sleep(1000)
+
+        onView(withId(R.id.etSummoner)).check(matches(isDisplayed()))
+
+    }
+
     @After
     fun tearDown(){
         mockWebServer.close()
