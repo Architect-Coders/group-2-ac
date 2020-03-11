@@ -2,6 +2,7 @@ package com.teamtwo.apilol
 
 import android.app.Application
 import androidx.room.Room
+import com.teamtwo.apilol.di.DataSourcesModule
 import com.teamtwo.apilol.di.champions.ChampionsAppModule
 import com.teamtwo.apilol.di.champions.ChampionsComponent
 import com.teamtwo.apilol.di.champions.ChampionsDataModule
