@@ -10,6 +10,6 @@ class SummonersRetrofitRemoteDataSource(
 ): SummonerRemoteDataSource {
 
     override suspend fun getSummoner(summonerName: String): Summoner? =
-        lolServiceManager.service.getSummoner(summonerName, apiKey).body()
+        lolServiceManager.apiService.getSummoner(summonerName, apiKey).body()
 
 }

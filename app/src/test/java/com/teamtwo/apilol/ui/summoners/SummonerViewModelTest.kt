@@ -41,8 +41,8 @@ class SummonerViewModelTest {
             viewModel.reload(defaultSummoner)
             assertSendsValues(
                 5,
-                SummonerViewModel.UiModelSummoner.Loading(),
-                SummonerViewModel.UiModelSummoner.Error("Ese nombre de usuario no existe ")
+                SummonerViewModel.UiModelSummoner.Loading,
+                SummonerViewModel.UiModelSummoner.Error
             )
         }
     }
@@ -65,7 +65,7 @@ class SummonerViewModelTest {
             viewModel.reload(defaultSummoner)
             assertSendsValues(
                 100,
-                SummonerViewModel.UiModelSummoner.Loading(),
+                SummonerViewModel.UiModelSummoner.Loading,
                 SummonerViewModel.UiModelSummoner.Content(localSummoner))
         }
     }

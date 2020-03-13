@@ -36,10 +36,14 @@ class SummonersDetailActivity : BaseActivity(R.layout.activity_summoner_detail) 
 
     private fun updateUi(uiModel: SummonerViewModel.UiModelSummoner) {
 
-        loading.visibility = if (uiModel is SummonerViewModel.UiModelSummoner.Loading) View.VISIBLE else View.GONE
+
 
         when (uiModel){
+            is SummonerViewModel.UiModelSummoner.Loading -> {
+                loading.visibility = View.VISIBLE
+            }
             is SummonerViewModel.UiModelSummoner.Content -> {
+                loading.visibility = View.GONE
                 val summoner: Summoner = uiModel.summoner
                 txt_profileIcon.text = summoner.profileIconId.toString()
                 txt_name.text = summoner.name
@@ -48,6 +52,7 @@ class SummonersDetailActivity : BaseActivity(R.layout.activity_summoner_detail) 
                 txt_id.text = summoner.id
             }
             is SummonerViewModel.UiModelSummoner.Error -> {
+                loading.visibility = View.GONE
                 toast("Usuario no encontrado")
             }
         }

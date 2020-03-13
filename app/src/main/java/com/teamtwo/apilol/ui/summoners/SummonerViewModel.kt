@@ -4,13 +4,14 @@ import androidx.lifecycle.*
 import com.example.data.SummonersRepository
 import com.example.domain.Summoner
 import com.example.usecases.GetSummoner
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SummonerViewModel(private val summonerRepository: GetSummoner) : ViewModel() {
 
     sealed class UiModelSummoner {
-        data class Loading(val name: String = "") : UiModelSummoner()
-        data class Error(val name: String = "") : UiModelSummoner()
+        object Loading : UiModelSummoner()
+        object Error : UiModelSummoner()
         class Content(val summoner: Summoner): UiModelSummoner()
     }
 
@@ -20,13 +21,13 @@ class SummonerViewModel(private val summonerRepository: GetSummoner) : ViewModel
         get() =  _model
 
     fun reload(name: String) {
-        viewModelScope.launch {
-            _model.value = UiModelSummoner.Loading()
+        viewModelScope.launch{
+            _model.value = UiModelSummoner.Loading
             val summonerResponse = summonerRepository.invoke(name)
             summonerResponse?.let {
                 _model.value = UiModelSummoner.Content(it)
             } ?: run {
-                _model.value = UiModelSummoner.Error()
+                _model.value = UiModelSummoner.Error
             }
         }
     }
