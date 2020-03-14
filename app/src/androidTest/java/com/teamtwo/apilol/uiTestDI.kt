@@ -2,7 +2,6 @@ package com.teamtwo.apilol
 
 import android.app.Application
 import androidx.room.Room
-import com.teamtwo.apilol.di.DataSourcesModule
 import com.teamtwo.apilol.di.champions.ChampionsAppModule
 import com.teamtwo.apilol.di.champions.ChampionsComponent
 import com.teamtwo.apilol.di.champions.ChampionsDataModule
@@ -11,6 +10,10 @@ import com.teamtwo.apilol.di.matches.MatchesAppModule
 import com.teamtwo.apilol.di.matches.MatchesComponent
 import com.teamtwo.apilol.di.matches.MatchesDataModule
 import com.teamtwo.apilol.di.matches.MatchesUseCaseModule
+import com.teamtwo.apilol.di.spells.SpellsAppModule
+import com.teamtwo.apilol.di.spells.SpellsComponent
+import com.teamtwo.apilol.di.spells.SpellsDataModule
+import com.teamtwo.apilol.di.spells.SpellsUseCaseModule
 import com.teamtwo.apilol.model.LOLServiceManager
 import com.teamtwo.apilol.model.database.ApiLolDatabase
 import dagger.BindsInstance
@@ -36,6 +39,26 @@ interface UiTestComponent : ChampionsComponent {
     @Component.Factory
     interface Factory {
         fun create(@BindsInstance app: Application): UiTestComponent
+    }
+
+}
+
+
+@Singleton
+@Component(modules = [
+    SpellsAppModule::class,
+    SpellsDataModule::class,
+    SpellsUseCaseModule::class,
+    UiTestServerModule::class
+])
+interface SpellsUiTestComponent : SpellsComponent {
+
+    val lolServiceManager: LOLServiceManager
+    val mockWebServer: MockWebServer
+
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance app: Application): SpellsUiTestComponent
     }
 
 }
@@ -69,6 +92,7 @@ class UiTestServerModule {
     )
         .allowMainThreadQueries()
         .build()
+
 
     @Provides
     @Singleton
