@@ -13,7 +13,7 @@ import javax.inject.Singleton
 open class DataSourcesModule {
 
     @Provides @Singleton
-    fun databaseProvider(app: Application) = Room.databaseBuilder(
+    fun databaseProvider(app: Application): ApiLolDatabase = Room.databaseBuilder(
         app,
         ApiLolDatabase::class.java,
         "api_lol_db"
