@@ -5,14 +5,13 @@ import com.example.data.RemoteDataSourceItems
 import com.teamtwo.apilol.Sensor.CountryCode
 import com.example.domain.Item as ItemDomain
 import com.teamtwo.apilol.model.LOLServiceManager
-import kotlin.coroutines.coroutineContext
 
 class RetrofitDataSource(
     private val lolServiceManager: LOLServiceManager
 ): RemoteDataSourceItems {
 
     override suspend fun getItems(): List<ItemDomain> {
-        val itemsResponse = lolServiceManager.service.getAllItems(CountryCode(coroutineContext as Application).getCode())
+        val itemsResponse = lolServiceManager.service.getAllItems(CountryCode(Application()).getCode())
         return itemsResponse.body()?.data?.values?.toList() ?: emptyList()
     }
 }
