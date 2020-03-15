@@ -95,4 +95,5 @@ dependencies {
 
     androidTestImplementation 'com.google.dagger:dagger:2.23.1'
     kaptAndroidTest 'com.google.dagger:dagger-compiler:2.23.1'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
 }
