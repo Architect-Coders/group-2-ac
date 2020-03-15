@@ -1,9 +1,6 @@
 package com.teamtwo.apilol.di.items
 
-import com.example.data.LocalDataSourceItems
-import com.example.data.RemoteDataSourceItems
-import com.example.data.ItemsRepository
-import com.example.data.RegionRepository
+import com.example.data.*
 import dagger.Module
 import dagger.Provides
 
@@ -17,4 +14,9 @@ class ItemsDataModule {
         regionRepository: RegionRepository
     ) = ItemsRepository(localDataSource, remoteDataSource,regionRepository)
 
+    @Provides
+    fun regionRepositoryProvider(
+        locationDataSource: LocationDataSource,
+        permissionChecker: PermissionChecker
+    ) = RegionRepository(locationDataSource, permissionChecker)
 }
