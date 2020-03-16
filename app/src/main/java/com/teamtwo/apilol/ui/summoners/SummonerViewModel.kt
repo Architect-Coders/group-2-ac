@@ -6,6 +6,7 @@ import com.example.domain.Summoner
 import com.example.usecases.GetSummoner
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SummonerViewModel(private val summonerRepository: GetSummoner) : ViewModel() {
 
@@ -21,9 +22,10 @@ class SummonerViewModel(private val summonerRepository: GetSummoner) : ViewModel
         get() =  _model
 
     fun reload(name: String) {
-        viewModelScope.launch{
+
+        viewModelScope.launch(){
             _model.value = UiModelSummoner.Loading
-            val summonerResponse = summonerRepository.invoke(name)
+            val summonerResponse = withContext(Dispatchers.IO){ summonerRepository.invoke(name) }
             summonerResponse?.let {
                 _model.value = UiModelSummoner.Content(it)
             } ?: run {
