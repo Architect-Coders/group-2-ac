@@ -4,7 +4,9 @@ import androidx.lifecycle.*
 import com.example.data.SpellsRepository
 import com.example.domain.Spell
 import com.example.usecases.GetSpells
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SpellsListViewModel(private val getSpells: GetSpells ) : ViewModel() {
 
@@ -24,7 +26,8 @@ class SpellsListViewModel(private val getSpells: GetSpells ) : ViewModel() {
      fun refresh() {
          viewModelScope.launch {
              _state.value = ViewState.Loading
-             _state.value = ViewState.ShowList(getSpells.invoke())
+             val response  = withContext(Dispatchers.IO){getSpells.invoke()}
+             _state.value = ViewState.ShowList(response)
          }
     }
 

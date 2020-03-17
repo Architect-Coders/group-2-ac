@@ -67,3 +67,12 @@ val localItem = Item(
         0
     )
 )
+
+val localSummoner = Summoner(
+    0,
+    "",
+    0,
+    "",
+    "",
+    0L
+)

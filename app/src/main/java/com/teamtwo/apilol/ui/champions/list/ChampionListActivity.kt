@@ -4,9 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.data.ChampionsRepository
+import com.example.usecases.GetChampions
 import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.R
+import com.teamtwo.apilol.model.champions.ChampionsRetrofitDataSource
+import com.teamtwo.apilol.model.champions.ChampionsRoomDataSource
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.ui.champions.list.ChampionListViewModel.UiModel
 import com.teamtwo.apilol.ui.champions.detail.ChampionDetailActivity
@@ -15,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_champion_list.*
 import kotlinx.android.synthetic.main.loading.*
 
 class ChampionListActivity : BaseActivity(R.layout.activity_champion_list) {
+
 
     /*
     private val viewModel by lazy {
@@ -30,7 +36,8 @@ class ChampionListActivity : BaseActivity(R.layout.activity_champion_list) {
             )
         ).get(ChampionListViewModel::class.java)
     }
-     */
+    */
+
 
     private lateinit var component: ChampionListActivityComponent
     private val viewModel by lazy { component.viewModel }

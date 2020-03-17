@@ -3,46 +3,47 @@ package com.teamtwo.apilol.ui.summoners
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.example.domain.Summoner
+import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
-import com.teamtwo.apilol.ui.summoners.SummonnerViewModel.UiModelSummoner
-import com.teamtwo.apilol.model.SummonerRepository
 import com.teamtwo.apilol.toast
 import kotlinx.android.synthetic.main.activity_summoner_detail.*
 import kotlinx.android.synthetic.main.loading.*
 
 class SummonersDetailActivity : BaseActivity(R.layout.activity_summoner_detail) {
 
-    private lateinit var viewModel: SummonnerViewModel
+    private lateinit var component: SummonerActivtyComponent
+
+    private  val  viewModel by lazy {component.viewModel}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         supportActionBar?.title = "Summoner"
 
-        viewModel = ViewModelProviders.of(this,
-            SumonnerViewModelFactory(SummonerRepository())
-        )[SummonnerViewModel::class.java]
+        component = (application as ApiLolAplication).summonerComponent.plus(SummonerActivtyModule())
 
         viewModel.model.observe(this, Observer(::updateUi))
 
         btnSearch.setOnClickListener {
             viewModel.reload(etSummoner.text.toString())
         }
-
     }
 
     override fun initListeners() {
     }
 
-    private fun updateUi(uiModel: UiModelSummoner) {
+    private fun updateUi(uiModel: SummonerViewModel.UiModelSummoner) {
 
-        loading.visibility = if (uiModel is UiModelSummoner.Loading) View.VISIBLE else View.GONE
+
 
         when (uiModel){
-            is UiModelSummoner.Content -> {
+            is SummonerViewModel.UiModelSummoner.Loading -> {
+                loading.visibility = View.VISIBLE
+            }
+            is SummonerViewModel.UiModelSummoner.Content -> {
+                loading.visibility = View.GONE
                 val summoner: Summoner = uiModel.summoner
                 txt_profileIcon.text = summoner.profileIconId.toString()
                 txt_name.text = summoner.name
@@ -50,7 +51,8 @@ class SummonersDetailActivity : BaseActivity(R.layout.activity_summoner_detail) 
                 txt_accountId.text = summoner.accountId
                 txt_id.text = summoner.id
             }
-            is UiModelSummoner.Error -> {
+            is SummonerViewModel.UiModelSummoner.Error -> {
+                loading.visibility = View.GONE
                 toast("Usuario no encontrado")
             }
         }

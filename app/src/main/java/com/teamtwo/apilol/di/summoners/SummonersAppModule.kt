@@ -1,9 +1,9 @@
 package com.teamtwo.apilol.di.summoners
 
-import com.example.data.RemoteSummonerDataSource
+import com.example.data.SummonerRemoteDataSource
 import com.teamtwo.apilol.BuildConfig
 import com.teamtwo.apilol.model.LOLServiceManager
-import com.teamtwo.apilol.model.sumonners.SummonersRetrofitDataSource
+import com.teamtwo.apilol.model.sumonners.SummonersRetrofitRemoteDataSource
 import dagger.Module
 import dagger.Provides
 
@@ -11,6 +11,6 @@ import dagger.Provides
 class SummonersAppModule {
 
     @Provides
-    fun remoteDataSourceProvider(lolServiceManager: LOLServiceManager): RemoteSummonerDataSource
-            = SummonersRetrofitDataSource(BuildConfig.API_KEY, lolServiceManager)
+    fun remoteDataSourceProvider(lolServiceManager: LOLServiceManager): SummonerRemoteDataSource
+            = SummonersRetrofitRemoteDataSource(BuildConfig.API_KEY, lolServiceManager)
 }

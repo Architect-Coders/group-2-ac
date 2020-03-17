@@ -1,11 +1,9 @@
 package com.teamtwo.apilol.ui.matches
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
 import com.example.data.MatchesLocalDataSource
 import com.example.data.MatchesRemoteDataSource
 import com.example.data.MatchesRepository
-import com.example.domain.FeaturedGameInfo
 import com.example.usecases.GetMatches
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
