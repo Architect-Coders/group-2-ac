@@ -13,7 +13,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.jakewharton.espresso.OkHttp3IdlingResource
-import com.teamtwo.apilol.model.LOLServiceManager
 import com.teamtwo.apilol.ui.MainActivity
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -73,6 +72,25 @@ class UiTest {
 
         onView(withId(R.id.rvChampions)).check(matches(isDisplayed()))
 
+    }
+
+    @ExperimentalTime
+    @Test
+    fun clickSummonerNavigateToSummonersList(){
+        mockWebServer.enqueue(
+            MockResponse()
+                .setResponseCode(200)
+                .setBody(summonerListMock)
+        )
+
+        onView(withId(R.id.btnDaniel)).perform(ViewActions.click())
+
+        SystemClock.sleep(1000)
+
+        onView(withId(R.id.etSummoner)).check(matches(isDisplayed()))
+
+        onView(withId(R.id.btnSearch)).perform(ViewActions.click())
+        onView(withId(R.id.loading)).check(matches(isDisplayed()))
     }
 
     @After

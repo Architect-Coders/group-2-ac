@@ -209,6 +209,19 @@ val championListMock = """
     }
 """.trimIndent()
 
+
+val summonerListMock = """
+    {
+      {"id":"8V0Mkw1Qc-CrOHUErl-VZfGkFXT3-12HsCXMVq1SvbAE",
+      "accountId":"5LnXnHQ5nqgGzLw-O-vajgEbH9juFTyInjMkb8nwnWSnyA",
+      "puuid":"zCBzxCS5_z6ZoE5Wyjcg4xy93l4EzMpbnUhhLkCGwPizxYBiKLaW97BhAeS26BEzVCHYCMQMct2z3g",
+      "name":"Irthael",
+      "profileIconId":4270,
+      "revisionDate":1582498954000,
+      "summonerLevel":63}
+    }
+""".trimIndent()
+
 val matchesListMock = """
     {
         "gameList": [

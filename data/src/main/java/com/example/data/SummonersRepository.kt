@@ -2,13 +2,11 @@ package com.example.data
 
 import com.example.domain.Summoner
 
-class SummonersRepository(
-    private val remoteSummonerDataSource: RemoteSummonerDataSource
-){
+class SummonersRepository(private val summonerRemoteDataSource: SummonerRemoteDataSource ){
     suspend fun findSummonerByName(summonerName: String): Summoner?
-            = remoteSummonerDataSource.getSummoner(summonerName)
+            = summonerRemoteDataSource.getSummoner(summonerName)
 }
 
-interface RemoteSummonerDataSource {
+interface SummonerRemoteDataSource {
     suspend fun getSummoner(summonerName: String): Summoner?
 }
