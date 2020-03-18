@@ -6,16 +6,12 @@ import com.example.data.LocalDataSourceItems
 import com.example.data.RemoteDataSourceItems
 import com.example.domain.Champion
 import com.example.domain.Item
-import com.teamtwo.apilol.di.champions.ChampionsAppModule
 import com.teamtwo.apilol.di.champions.ChampionsComponent
 import com.teamtwo.apilol.di.champions.ChampionsDataModule
 import com.teamtwo.apilol.di.champions.ChampionsUseCaseModule
 import com.teamtwo.apilol.di.items.ItemsComponent
 import com.teamtwo.apilol.di.items.ItemsDataModule
 import com.teamtwo.apilol.di.items.ItemsUseCaseModule
-import com.teamtwo.apilol.model.LOLServiceManager
-import com.teamtwo.apilol.ui.champions.detail.ChampionDetailViewModel
-import com.teamtwo.apilol.ui.champions.list.ChampionListViewModel
 import com.teamtwo.apilol.ui.champions.localChampion
 import com.teamtwo.apilol.ui.items.localItem
 import dagger.Component

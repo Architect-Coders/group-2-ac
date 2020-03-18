@@ -5,7 +5,6 @@ import androidx.lifecycle.Observer
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.teamtwo.apilol.*
-import com.teamtwo.apilol.di.champions.ChampionsComponent
 import com.teamtwo.apilol.ui.champions.localChampion
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
