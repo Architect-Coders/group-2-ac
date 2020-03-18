@@ -15,7 +15,7 @@
         android:layout_marginStart="@dimen/marginSmall"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:background="@color/yellow"
+        tools:background="@color/white"
         />
 
     <TextView
@@ -23,8 +23,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvNameSpell"
         tools:text="Hechizo"
+        android:textSize="@dimen/font18"
         android:layout_marginStart="@dimen/marginSmall"
-        android:textColor="@color/yellow"
+        android:textColor="@color/white"
         android:padding="@dimen/marginSmall"
         android:layout_marginTop="@dimen/marginSmall"
         app:layout_constraintTop_toTopOf="parent"

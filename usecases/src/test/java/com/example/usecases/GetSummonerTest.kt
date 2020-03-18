@@ -12,10 +12,11 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.internal.verification.Times
 
-class GetSummonersTest {
+class GetSummonerTest {
 
     private val repository: SummonersRepository = mock()
     private lateinit var useCase: GetSummoner
+    private val defaultSummoner: String = "Irthael"
 
     @Before
     fun setUp() {
@@ -24,20 +25,21 @@ class GetSummonersTest {
 
     @Test
     fun `useCase ask repository for data`(): Unit = runBlocking {
-        useCase.invoke("Irthael")
-        verify(repository, Times(1)).findSummonerByName("Irthael")
+
+        useCase.invoke(defaultSummoner)
+        verify(repository, Times(1)).findSummonerByName(defaultSummoner)
         Unit
     }
 
     @Test
-    fun `useCase returns both lists`(): Unit = runBlocking {
+    fun `useCase returns summoner item`(): Unit = runBlocking {
 
-        val mockSummoner = localSummoner
-        whenever(repository.findSummonerByName("Irthael")).doReturn(mockSummoner to mockSummoner)
+        val mockItem = localSummoner
+        whenever(repository.findSummonerByName(defaultSummoner)).doReturn(mockItem)
 
-        val data = useCase.invoke("Irthael")
+        val data = useCase.invoke(defaultSummoner)
 
-        Assert.assertEquals(mockSummoner to mockSummoner, data)
+        Assert.assertEquals(mockItem, data)
     }
 
     @After

@@ -1,15 +1,15 @@
 package com.teamtwo.apilol.model.sumonners
 
-import com.example.data.RemoteSummonerDataSource
+import com.example.data.SummonerRemoteDataSource
 import com.example.domain.Summoner
 import com.teamtwo.apilol.model.LOLServiceManager
 
-class SummonersRetrofitDataSource(
+class SummonersRetrofitRemoteDataSource(
     private val apiKey: String,
     private val lolServiceManager: LOLServiceManager
-): RemoteSummonerDataSource {
+): SummonerRemoteDataSource {
 
     override suspend fun getSummoner(summonerName: String): Summoner? =
-        lolServiceManager.service.getSummoner(summonerName, apiKey).body()
+        lolServiceManager.apiService.getSummoner(summonerName, apiKey).body()
 
 }
