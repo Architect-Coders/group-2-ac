@@ -2,8 +2,6 @@ package com.teamtwo.apilol.model.items
 
 import android.app.Application
 import com.example.data.RemoteDataSourceItems
-import com.teamtwo.apilol.Sensor.CountryCode
-import com.teamtwo.apilol.Sensor.CountryLanguage
 import com.example.domain.Item as ItemDomain
 import com.teamtwo.apilol.model.LOLServiceManager
 
