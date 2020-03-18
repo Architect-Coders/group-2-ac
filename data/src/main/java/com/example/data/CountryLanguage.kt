@@ -1,4 +1,4 @@
-package com.teamtwo.apilol.Sensor
+package com.example.data
 
 enum class CountryLanguage (val code: String){
     US("en_US"),

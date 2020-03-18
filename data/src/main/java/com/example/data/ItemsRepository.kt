@@ -8,8 +8,10 @@ class ItemsRepository(
     private val regionRepository: RegionRepository
 ){
     suspend fun getItems(): List<Item> {
+
         if (!localDataSourceItems.itemsExists()){
-            val items = remoteDataSourceItems.getItems(regionRepository.findLastRegion())
+            val region: String = CountryLanguage.valueOf(regionRepository.findLastRegion()).code
+            val items = remoteDataSourceItems.getItems(region)
             localDataSourceItems.saveItems(items)
         }
 

@@ -8,7 +8,7 @@ class RegionRepository(
     private val permissionChecker: PermissionChecker
 ) {
     companion object {
-        const val DEFAULT_REGION = "US"
+        const val DEFAULT_REGION = "ES"
     }
 
     suspend fun findLastRegion(): String {
