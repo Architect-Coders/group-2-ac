@@ -145,6 +145,6 @@ class FakeItemsRemoteDataSource : RemoteDataSourceItems {
 
     var items = defaultFakeItems
 
-    override suspend fun getItems(): List<Item> = items
+    override suspend fun getItems(region: String): List<Item> = items
 
 }
