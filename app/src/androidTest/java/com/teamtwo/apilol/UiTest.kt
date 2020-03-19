@@ -52,13 +52,6 @@ class UiTest {
 
     @ExperimentalTime
     @Test
-    fun clickChampionsNavigateToChampionList_showsLoading(){
-        onView(withId(R.id.btnCarlos)).perform(ViewActions.click())
-        onView(withId(R.id.loading)).check(matches(isDisplayed()))
-    }
-
-    @ExperimentalTime
-    @Test
     fun clickChampionsNavigateToChampionList(){
         mockWebServer.enqueue(
             MockResponse()
@@ -73,6 +66,7 @@ class UiTest {
         onView(withId(R.id.rvChampions)).check(matches(isDisplayed()))
 
     }
+
     @ExperimentalTime
     @Test
     fun clickItemsNavigateToItemList_showsLoading(){
