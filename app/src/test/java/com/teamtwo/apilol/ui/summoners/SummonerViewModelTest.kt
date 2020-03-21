@@ -8,6 +8,7 @@ import com.teamtwo.apilol.CoroutinesTestRule
 import com.teamtwo.apilol.captureValues
 import kotlinx.coroutines.*
 import org.junit.*
+import org.junit.Assert.assertEquals
 import org.mockito.internal.verification.Times
 
 class SummonerViewModelTest {
@@ -34,39 +35,35 @@ class SummonerViewModelTest {
     @Test
     fun `initialise viewmodel automatically propagates loading state`(): Unit = coroutinesTestRule.runBlocking {
 
+        viewModel.model.observeForever(observer)
+
         val mockData = localSummoner
         whenever(useCase.invoke(defaultSummoner)).doReturn(mockData)
 
-        viewModel.model.captureValues {
-            viewModel.reload(defaultSummoner)
-            assertSendsValues(
-                5,
-                SummonerViewModel.UiModelSummoner.Loading,
-                SummonerViewModel.UiModelSummoner.Error
-            )
-        }
+        viewModel.reload(defaultSummoner)
+        verify(observer).onChanged(SummonerViewModel.UiModelSummoner.Loading)
     }
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `initialise viewmodel requests data to the usecase`(): Unit = coroutinesTestRule.runBlocking {
-
-        viewModel.model
+    fun `initialise viewmodel requests data to the usecase`() = coroutinesTestRule.runBlocking {
+        viewModel.reload(defaultSummoner)
         verify(useCase, Times(1)).invoke(defaultSummoner)
-        Unit
     }
 
     @ExperimentalCoroutinesApi
     @Test
     fun `receiving summoner`(): Unit = coroutinesTestRule.runBlocking {
+
+        viewModel.model.observeForever(observer)
+
         val mockData = localSummoner
         whenever(useCase.invoke(defaultSummoner)).doReturn(mockData)
-        viewModel.model.captureValues {
-            viewModel.reload(defaultSummoner)
-            assertSendsValues(
-                100,
-                SummonerViewModel.UiModelSummoner.Loading,
-                SummonerViewModel.UiModelSummoner.Content(localSummoner))
-        }
+
+        viewModel.reload(defaultSummoner)
+
+        verify(observer).onChanged(
+            refEq(SummonerViewModel.UiModelSummoner.Content(localSummoner))
+        )
     }
 }

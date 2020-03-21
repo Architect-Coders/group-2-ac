@@ -25,7 +25,7 @@ class SummonerViewModel(private val summonerRepository: GetSummoner) : ViewModel
 
         viewModelScope.launch(){
             _model.value = UiModelSummoner.Loading
-            val summonerResponse = withContext(Dispatchers.IO){ summonerRepository.invoke(name) }
+            val summonerResponse = summonerRepository.invoke(name)
             summonerResponse?.let {
                 _model.value = UiModelSummoner.Content(it)
             } ?: run {
