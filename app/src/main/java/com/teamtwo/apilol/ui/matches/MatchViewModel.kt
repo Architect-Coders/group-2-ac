@@ -16,9 +16,7 @@ class MatchViewModel (private val useCase: GetMatches): ViewModel() {
         _uiState.value = MatchListUiData.Loading()
 
         viewModelScope.launch {
-            val response = withContext(Dispatchers.IO) {
-                useCase.invoke()
-            }
+            val response = useCase.invoke()
             _uiState.value = mapToUiEvent(response.first, response.second)
         }
     }

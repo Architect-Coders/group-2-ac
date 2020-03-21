@@ -5,8 +5,10 @@ import com.example.data.MatchesLocalDataSource
 import com.example.data.MatchesRemoteDataSource
 import com.example.data.MatchesRepository
 import com.example.usecases.GetMatches
+import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
 import com.teamtwo.apilol.CoroutinesTestRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Rule
@@ -58,9 +60,9 @@ class MatchesIntegrationTests {
     @Test
     fun `the repository merges local and remote data`(): Unit = coroutinesTestRule.runBlocking {
 
-        val mockMatches = listOf(localMatch)
+        whenever(remoteSource.getMatches()).doReturn(emptyList())
         viewModelDataSource.requestRecentMatches()
-        verify(localSource, Times(1)).saveMatches(mockMatches)
+        verify(localSource, Times(1)).saveMatches(emptyList())
         verify(remoteSource, Times(1)).getMatches()
     }
 
