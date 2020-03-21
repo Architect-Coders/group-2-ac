@@ -69,13 +69,6 @@ class UiTest {
 
     @ExperimentalTime
     @Test
-    fun clickItemsNavigateToItemList_showsLoading(){
-        onView(withId(R.id.btnDavid)).perform(ViewActions.click())
-        onView(withId(R.id.loading)).check(matches(isDisplayed()))
-    }
-
-    @ExperimentalTime
-    @Test
     fun clickItemsNavigateToItemList(){
         mockWebServer.enqueue(
             MockResponse()

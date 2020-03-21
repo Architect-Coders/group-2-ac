@@ -64,7 +64,7 @@ class FakeItemsLocalDataSource : LocalDataSourceItems {
 
     var items = emptyList<Item>()
 
-    override suspend fun itemsExists(): Boolean = items.isEmpty()
+    override suspend fun itemsExists(): Boolean = items.isNotEmpty()
 
     override suspend fun saveItems(items: List<Item>) {
         this.items = items
