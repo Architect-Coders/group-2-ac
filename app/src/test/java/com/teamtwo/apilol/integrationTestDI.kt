@@ -3,13 +3,9 @@ package com.teamtwo.apilol
 import com.example.data.ChampionsLocalDataSource
 import com.example.data.ChampionsRemoteDataSource
 import com.example.domain.Champion
-import com.teamtwo.apilol.di.champions.ChampionsAppModule
 import com.teamtwo.apilol.di.champions.ChampionsComponent
 import com.teamtwo.apilol.di.champions.ChampionsDataModule
 import com.teamtwo.apilol.di.champions.ChampionsUseCaseModule
-import com.teamtwo.apilol.model.LOLServiceManager
-import com.teamtwo.apilol.ui.champions.detail.ChampionDetailViewModel
-import com.teamtwo.apilol.ui.champions.list.ChampionListViewModel
 import com.teamtwo.apilol.ui.champions.localChampion
 import dagger.Component
 import dagger.Module
@@ -32,6 +28,8 @@ interface TestComponent : ChampionsComponent {
         fun create(): TestComponent
     }
 }
+
+
 
 @Module
 class TestAppModule {
@@ -82,3 +80,4 @@ class FakeChampionsRemoteDataSource : ChampionsRemoteDataSource {
     override suspend fun getChampions(): List<Champion> = champions
 
 }
+

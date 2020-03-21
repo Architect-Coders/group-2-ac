@@ -42,7 +42,7 @@ class ItemDetailActivity : BaseActivity(R.layout.activity_item_detail) {
 
         supportActionBar?.title = item.name
         tvName.text = item.name
-        tvDescription.text = item.description
+        tvDescription.text = item.description.replace("\\<.*?>".toRegex(),"")
 
         with(item.image){
 

@@ -55,7 +55,7 @@ class ItemListActivity : BaseActivity(R.layout.activity_item_list) {
             is UiModel.Navigation ->
                 startActivity(
                     Intent(this, ItemDetailActivity::class.java)
-                        .putExtra(ItemDetailActivity::class.java.canonicalName, uiModel.item.id)
+                        .putExtra(ItemDetailActivity::class.java.canonicalName, uiModel.item.id.toString())
                 )
         }
     }

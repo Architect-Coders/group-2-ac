@@ -4,11 +4,14 @@ import com.example.domain.Item
 
 class ItemsRepository(
     private val localDataSourceItems: LocalDataSourceItems,
-    private val remoteDataSourceItems: RemoteDataSourceItems
+    private val remoteDataSourceItems: RemoteDataSourceItems,
+    private val regionRepository: RegionRepository
 ){
     suspend fun getItems(): List<Item> {
+
         if (!localDataSourceItems.itemsExists()){
-            val items = remoteDataSourceItems.getItems()
+            val region: String = CountryLanguage.valueOf(regionRepository.findLastRegion()).code
+            val items = remoteDataSourceItems.getItems(region)
             localDataSourceItems.saveItems(items)
         }
 
@@ -32,5 +35,5 @@ interface LocalDataSourceItems {
 }
 
 interface RemoteDataSourceItems {
-    suspend fun getItems(): List<Item>
+    suspend fun getItems(region: String): List<Item>
 }

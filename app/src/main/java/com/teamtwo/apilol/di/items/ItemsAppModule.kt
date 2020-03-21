@@ -1,7 +1,9 @@
 package com.teamtwo.apilol.di.items
 
-import com.example.data.LocalDataSourceItems
-import com.example.data.RemoteDataSourceItems
+import android.app.Application
+import com.example.data.*
+import com.teamtwo.apilol.AndroidPermissionChecker
+import com.teamtwo.apilol.PlayServicesLocationDataSource
 import com.teamtwo.apilol.model.LOLServiceManager
 import com.teamtwo.apilol.model.database.ApiLolDatabase
 import com.teamtwo.apilol.model.items.RetrofitDataSource
@@ -18,4 +20,12 @@ class ItemsAppModule {
     @Provides
     fun remoteDataSourceProvider(lolServiceManager: LOLServiceManager): RemoteDataSourceItems
             = RetrofitDataSource(lolServiceManager)
+
+    @Provides
+    fun locationDataSourceProvider(app: Application): LocationDataSource =
+        PlayServicesLocationDataSource(app)
+
+    @Provides
+    fun permissionCheckerProvider(app: Application): PermissionChecker =
+        AndroidPermissionChecker(app)
 }

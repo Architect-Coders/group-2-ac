@@ -1,6 +1,8 @@
 package com.teamtwo.apilol.model
 
 import com.example.domain.*
+import com.example.domain.ChampionsResponse
+import com.example.domain.ItemsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header

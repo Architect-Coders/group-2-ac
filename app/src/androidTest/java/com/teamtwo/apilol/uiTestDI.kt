@@ -6,6 +6,10 @@ import com.teamtwo.apilol.di.champions.ChampionsAppModule
 import com.teamtwo.apilol.di.champions.ChampionsComponent
 import com.teamtwo.apilol.di.champions.ChampionsDataModule
 import com.teamtwo.apilol.di.champions.ChampionsUseCaseModule
+import com.teamtwo.apilol.di.items.ItemsAppModule
+import com.teamtwo.apilol.di.items.ItemsComponent
+import com.teamtwo.apilol.di.items.ItemsDataModule
+import com.teamtwo.apilol.di.items.ItemsUseCaseModule
 import com.teamtwo.apilol.di.matches.MatchesAppModule
 import com.teamtwo.apilol.di.matches.MatchesComponent
 import com.teamtwo.apilol.di.matches.MatchesDataModule
@@ -43,6 +47,24 @@ interface UiTestComponent : ChampionsComponent {
 
 }
 
+@Singleton
+@Component(modules = [
+    ItemsAppModule::class,
+    ItemsDataModule::class,
+    ItemsUseCaseModule::class,
+    UiTestServerModule::class
+])
+interface ItemsUiTestComponent : ItemsComponent {
+
+    val lolServiceManager: LOLServiceManager
+    val mockWebServer: MockWebServer
+
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance app: Application): ItemsUiTestComponent
+    }
+
+}
 
 @Singleton
 @Component(modules = [

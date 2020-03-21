@@ -209,6 +209,51 @@ val championListMock = """
     }
 """.trimIndent()
 
+val itemListMock = """
+    {
+      "type": "item",
+      "version": "9.23.1",
+      "data": {
+        "1": {
+          "name": "Botas",
+          "description": "Botas basicas",
+          "plaintext": "Botas para aumentar velocidad",
+          "image": {
+            "full": "1001.png",
+            "sprite": "item0.png",
+            "group": "item",
+            "x": 0,
+            "y": 0,
+            "w": 48,
+            "h": 48
+          },
+          "gold": {
+            "total":100,
+            "sell":50
+          }
+        },
+        "2": {
+          "name": "Botas nuevas",
+          "description": "Botas nuevas",
+          "plaintext": "Botas para aumentar mucho la velocidad",
+          "image": {
+            "full": "1004.png",
+            "sprite": "item4.png",
+            "group": "item",
+            "x": 0,
+            "y": 0,
+            "w": 48,
+            "h": 48
+          },
+          "gold": {
+            "total":100,
+            "sell":50
+          }
+        }
+      }
+    }
+""".trimIndent()
+
 
 val summonerListMock = """
     {
