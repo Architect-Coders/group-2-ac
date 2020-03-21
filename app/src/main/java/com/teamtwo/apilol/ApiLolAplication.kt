@@ -9,8 +9,6 @@ import com.teamtwo.apilol.di.matches.DaggerMatchesComponent
 import com.teamtwo.apilol.di.matches.MatchesComponent
 import com.teamtwo.apilol.di.spells.DaggerSpellsComponent
 import com.teamtwo.apilol.di.spells.SpellsComponent
-import com.teamtwo.apilol.di.items.DaggerItemsComponent
-import com.teamtwo.apilol.di.items.ItemsComponent
 import com.teamtwo.apilol.di.summoners.DaggerSummonersComponent
 import com.teamtwo.apilol.di.summoners.SummonersComponent
 
