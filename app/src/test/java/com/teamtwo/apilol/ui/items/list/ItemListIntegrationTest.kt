@@ -24,7 +24,7 @@ class ItemListIntegrationTest {
 
     private var observer: Observer<ItemListViewModel.UiModel> = mock()
     private lateinit var viewModel: ItemListViewModel
-    private val component: ItemTestComponent = DaggerTestComponent.factory().create()
+    private val component: ItemTestComponent = DaggerItemTestComponent.factory().create()
 
     @Before
     fun setUp(){
@@ -42,7 +42,6 @@ class ItemListIntegrationTest {
         verify(observer).onChanged(
             ArgumentMatchers.refEq(ItemListViewModel.UiModel.Content(defaultFakeItems))
         )
-
     }
 
     @ExperimentalCoroutinesApi

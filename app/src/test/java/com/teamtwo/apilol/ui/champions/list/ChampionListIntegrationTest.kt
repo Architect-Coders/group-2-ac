@@ -42,7 +42,6 @@ class ChampionListIntegrationTest {
         verify(observer).onChanged(
             ArgumentMatchers.refEq(ChampionListViewModel.UiModel.Content(defaultFakeChampions))
         )
-
     }
 
     @ExperimentalCoroutinesApi

@@ -2,14 +2,12 @@ package com.teamtwo.apilol.ui.items.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.example.domain.Champion
 import com.example.domain.Item
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.teamtwo.apilol.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -26,8 +24,7 @@ class ItemDetailIntegrationTest {
     private var observer: Observer<Item> = mock()
     private lateinit var viewModel: ItemDetailViewModel
     private lateinit var localDataSource: FakeItemsLocalDataSource
-    private val component: ItemTestComponent = DaggerTestComponent.factory().create()
-
+    private val component: ItemTestComponent = DaggerItemTestComponent.factory().create()
     @Before
     fun setUp(){
         viewModel = component.plus(ItemDetailActivityModule(defaultFakeItems[0].id.toString())).itemDetailViewModel
