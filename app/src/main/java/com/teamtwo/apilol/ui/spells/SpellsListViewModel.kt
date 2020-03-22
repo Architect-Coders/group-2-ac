@@ -26,7 +26,7 @@ class SpellsListViewModel(private val getSpells: GetSpells ) : ViewModel() {
      fun refresh() {
          viewModelScope.launch {
              _state.value = ViewState.Loading
-             val response  = withContext(Dispatchers.IO){getSpells.invoke()}
+             val response  = getSpells.invoke()
              _state.value = ViewState.ShowList(response)
          }
     }
