@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import com.example.domain.Champion
 import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.R
+import com.teamtwo.apilol.getViewModel
 import com.teamtwo.apilol.loadUrl
 import com.teamtwo.apilol.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_champion_detail.*
@@ -11,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_champion_detail.*
 class ChampionDetailActivity : BaseActivity(R.layout.activity_champion_detail) {
 
     private lateinit var component: ChampionDetailActivityComponent
-    private val viewModel by lazy { component.championDetailViewModel }
+    private val viewModel by lazy { getViewModel { component.championDetailViewModel } }
 
     companion object {
         const val BASE_URL_HEADER = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"

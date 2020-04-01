@@ -7,6 +7,7 @@ import com.example.domain.Summoner
 import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
+import com.teamtwo.apilol.getViewModel
 import com.teamtwo.apilol.toast
 import kotlinx.android.synthetic.main.activity_summoner_detail.*
 import kotlinx.android.synthetic.main.loading.*
@@ -15,7 +16,7 @@ class SummonersDetailActivity : BaseActivity(R.layout.activity_summoner_detail) 
 
     private lateinit var component: SummonerActivtyComponent
 
-    private  val  viewModel by lazy {component.viewModel}
+    private  val  viewModel by lazy { getViewModel { component.viewModel } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

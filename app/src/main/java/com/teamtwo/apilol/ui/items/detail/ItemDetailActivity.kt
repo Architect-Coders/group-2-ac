@@ -5,13 +5,14 @@ import com.example.domain.Item
 import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
+import com.teamtwo.apilol.getViewModel
 import com.teamtwo.apilol.loadUrl
 import kotlinx.android.synthetic.main.activity_item_detail.*
 
 class ItemDetailActivity : BaseActivity(R.layout.activity_item_detail) {
 
     private lateinit var component: ItemDetailActivityComponent
-    private val viewModel by lazy { component.itemDetailViewModel }
+    private val viewModel by lazy { getViewModel { component.itemDetailViewModel } }
 
     companion object {
         const val BASE_URL_BACKGROUND = "https://ddragon.leagueoflegends.com/cdn/9.24.2/img/item/"

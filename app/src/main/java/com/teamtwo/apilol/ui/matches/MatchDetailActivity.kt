@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_match_detail.*
 import kotlinx.android.synthetic.main.activity_match_detail.gameIdText
 import kotlinx.android.synthetic.main.activity_match_detail.participantGroup1
 import kotlinx.android.synthetic.main.activity_match_detail.participantGroup2
-import kotlinx.android.synthetic.main.cell_featured_match.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.time.seconds

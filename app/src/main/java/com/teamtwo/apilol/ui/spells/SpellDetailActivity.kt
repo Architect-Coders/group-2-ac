@@ -2,12 +2,12 @@ package com.teamtwo.apilol.ui.spells
 
 import android.content.Intent
 import android.os.Bundle
-import com.teamtwo.apilol.ui.base.BaseActivity
-import com.teamtwo.apilol.R
-import com.teamtwo.apilol.loadUrl
 import com.example.domain.Spell
 import com.google.gson.Gson
+import com.teamtwo.apilol.R
+import com.teamtwo.apilol.loadUrl
 import com.teamtwo.apilol.toast
+import com.teamtwo.apilol.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_detail_spell.*
 
 class SpellDetailActivity : BaseActivity(R.layout.activity_detail_spell) {

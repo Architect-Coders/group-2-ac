@@ -8,13 +8,14 @@ import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
 import com.google.gson.Gson
 import com.teamtwo.apilol.ApiLolAplication
+import com.teamtwo.apilol.getViewModel
 import kotlinx.android.synthetic.main.activity_spells_list.*
 
 class SpellsLsitActivity : BaseActivity(R.layout.activity_spells_list) {
 
     private lateinit var component: SpellListActivtyComponent
 
-    private  val  viewModel by lazy {component.viewModel}
+    private  val  viewModel by lazy { getViewModel { component.viewModel } }
     private lateinit var adapter: SpellsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

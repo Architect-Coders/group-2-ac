@@ -8,6 +8,7 @@ import com.google.gson.Gson
 import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
+import com.teamtwo.apilol.getViewModel
 import com.teamtwo.apilol.toast
 import kotlinx.android.synthetic.main.activity_match_list.*
 
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_match_list.*
 class MatchListActivity: BaseActivity(R.layout.activity_match_list) {
 
     private lateinit var component: MatchesListActivityComponent
-    private val viewModel by lazy { component.viewModel }
+    private val viewModel by lazy { getViewModel { component.viewModel } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         component = (application as ApiLolAplication).matchesComponent.plus(MatchesListActivityModule())

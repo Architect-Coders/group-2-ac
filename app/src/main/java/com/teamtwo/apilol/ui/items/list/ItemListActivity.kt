@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.teamtwo.apilol.ApiLolAplication
 import com.teamtwo.apilol.ui.base.BaseActivity
 import com.teamtwo.apilol.R
+import com.teamtwo.apilol.getViewModel
 import com.teamtwo.apilol.ui.items.detail.ItemDetailActivity
 import com.teamtwo.apilol.ui.items.list.ItemListViewModel.UiModel
 import kotlinx.android.synthetic.main.activity_item_list.*
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.loading.*
 class ItemListActivity : BaseActivity(R.layout.activity_item_list) {
 
     private lateinit var component: ItemListActivityComponent
-    private val viewModel by lazy { component.viewModel }
+    private val viewModel by lazy { getViewModel { component.viewModel } }
 
     private lateinit var adapter: ItemsAdapter
 
